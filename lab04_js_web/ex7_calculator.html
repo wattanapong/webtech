@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        #calculator {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        #display {
+            padding: 10px;
+            text-align: right;
+            font-size: 48px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        #buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            font-size: 36px;
+            padding: 30px;
+            cursor: pointer;
+            background-color: #eee;
+        }
+
+        button.operator {
+            background-color: #f7941d;
+            color: #fff;
+        }
+
+        button.double {
+            grid-column: span 2;
+        }
+
+        button.clear {
+            background-color: #ff4d4d;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="calculator">
+    <div id="display">0</div>
+    <div id="buttons">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="operator">/</button>
+
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="operator">*</button>
+
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="operator">-</button>
+
+        <button class="double">0</button>
+        <button>.</button>
+        <button class="operator">+</button>
+        <button class="operator double">=</button>
+
+        <button class="clear double">C</button>
+    </div>
+</div>
+
+<script src="js/calculator.js"></script>
+</body>
+</html>

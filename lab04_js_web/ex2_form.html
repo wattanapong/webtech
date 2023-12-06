@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+</head>
+
+<body>
+    <form action="" method="post">
+
+        <!-- Text Input -->
+        <label for="text-input">Text Input:</label>
+        <input type="text" id="text-input" name="text-input" required>
+
+        <br>
+
+        <!-- Password Input -->
+        <label for="password-input">Password:</label>
+        <input type="password" id="password-input" name="password-input" required>
+
+        <br>
+
+        <!-- Textarea -->
+        <label for="textarea">Textarea:</label>
+        <textarea id="textarea" name="textarea" rows="4" cols="50" required></textarea>
+
+        <br>
+
+        <!-- Radio Buttons -->
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label>
+
+        <br>
+
+        <!-- Checkbox -->
+        <input type="checkbox" id="subscribe" name="subscribe" value="subscribe">
+        <label for="subscribe">Subscribe to newsletter</label>
+
+        <br>
+
+        <!-- Select Dropdown -->
+        <label for="select">Select a fruit:</label>
+        <select id="select" name="select" required>
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="orange">Orange</option>
+        </select>
+
+        <br>
+
+        <!-- File Input -->
+        <label for="file">Choose a file:</label>
+        <input type="file" id="file" name="file" accept=".jpg, .jpeg, .png" required>
+
+        <br>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+
+    </form>
+
+</body>
+
+</html>

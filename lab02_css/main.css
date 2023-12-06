@@ -1,7 +1,42 @@
-#div1{
-    color: blue;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-#DIV1{
-    color: yellow;
+#txt-yellow{
+    color: rgb(255, 255, 0);
+}
+
+.txt-blue{
+    color: #00F;
+}
+
+header {
+    background-color: #0FF;
+    color: rgb(0, 0, 255);
+    padding: 10px;
+    text-align: center;
+}
+
+aside {
+    background-color: #f4f4f4;
+    float: left;
+    width: 150px;
+    height: 80vh;
+    padding: 20px;
+}
+
+main {
+    margin-left: 150px;
+    padding: 20px;
+}
+
+footer {
+    background-color: #8FF;
+    color: #02F;
+    padding: 5px 0px;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

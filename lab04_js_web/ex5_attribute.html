@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/attribute.css">
+</head>
+
+<body>
+    <div class="container-fluid ">
+        <div class="row">
+            <h1>Image Gallery</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-2"><button type="button" onclick="alert('สวัสดี')" class="btn btn-success">Alert</button>
+            </div>
+            <div class="col-2"><button class="btn btn-success addclick">A</button></div>
+            <div class="col-2"><button class="btn btn-success">B</button></div>
+            <div class="col-2"><button class="btn btn-success">C</button></div>
+            <div class="col-2"><button class="btn btn-success">D</button></div>
+            <div class="col-2"><button class="btn btn-success">E</button></div>
+        </div>
+
+        <!-- <div class="row gallery justify-content-center fixed-bottom">
+            <img src="img/sample.jpg">
+        </div> -->
+
+        <div class="row thumbnail justify-content-center fixed-bottom">
+            <div class="d-inline-flex m-2 w-auto" onclick="show('img/img28.jpg')"><img src="img/img28.jpg"></div>
+            <div class="d-inline-flex m-2 w-auto" onclick="show('img/img29.jpg')"><img src="img/img29.jpg"></div>
+            <div class="d-inline-flex m-2 w-auto" onclick="show('img/img30.jpg')"><img src="img/img30.jpg"></div>
+            <div class="d-inline-flex m-2 w-auto" onclick="show('img/img31.jpg')"><img src="img/img31.jpg"></div>
+        </div>
+    </div>
+    <br><br>
+
+    <div class="gallery">
+        <h3>Image Sample</h3>
+        <img src="img/sample.jpg">
+    </div>
+
+    <textarea class="result" cols="50"></textarea>
+
+    </div>
+
+    <script src="js/attribute.js"></script>
+</body>
+
+</html>

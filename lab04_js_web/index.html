@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Webpage</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/sticky.css">
+    <!-- <script src="js/prompt.js"></script> -->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-info bg-gradient p-4">
+            <div class="col-1"><img src="../images/UP.png" height="100px"></div>
+            <div class="col-10 text-light text-center">
+                <h1 class="intro">Web Technology</h1>
+            </div>
+            <div class="col-1 text-light">
+                <h3 id="name"></h3>
+            </div>
+        </div>
+        <div class="row">
+            <input type="checkbox" id="navbar-toggle-cbox">
+            <div class="navbar-header">
+                <label for="navbar-toggle-cbox" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </label>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="col-2 bg-light p-3" style="height: 83vh;">
+                <ul class="p-0 mobile-hide">
+                    <h3 class="text-center text-primary bg-white p-0">Menu</h3>
+                    <li>Home</li>
+                    <li>News</li>
+                    <li>Contact Us</li>
+                    <li>About Us</li>
+                </ul>
+            </div>
+            <div class="col-10 pt-0">
+                <div class="row">
+                    <div class="col-12 main-layout text-center">
+                        <div id="stick1">Sticky Note 1</div>
+                        <div id="stick2">Stick Note 2</div>
+                        <div id="stick3">Stick Note 3</div>
+                        <div class="message">This part is the bottom of example text.</div>
+                    </div>
+                    <div class="col-12 mb-4 pb-3">
+                        <form action="" method="post">
+
+                            <!-- Text Input -->
+                            <div class="mb-1">
+                                <label for="user" class="form-label">Username:</label>
+                                <input type="text" class="form-control" id="user" name="user" required>
+                            </div>
+
+                            <!-- Password Input -->
+                            <div class="mb-1">
+                                <label for="password" class="form-label">Password:</label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    required>
+                            </div>
+
+                            <!-- Textarea -->
+                            <div class="mb-1">
+                                <label for="textarea" class="form-label">Textarea:</label>
+                                <textarea class="form-control" id="textarea" name="textarea" rows="2"
+                                    required></textarea>
+                            </div>
+
+                            <!-- Radio Buttons -->
+                            <div class="mb-1">
+                                <label class="form-label">เพศ:</label>
+                                <div class="form-check form-check-inline ">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male"
+                                        required>
+                                    <label class="form-check-label" for="male">ชาย</label>
+                                </div>
+                                <div class="form-check form-check-inline ">
+                                    <input class="form-check-input" type="radio" name="gender" id="female"
+                                        value="female" required>
+                                    <label class="form-check-label" for="female">หญิง</label>
+                                </div>
+                            </div>
+
+                            <!-- Checkbox -->
+                            <label class="form-label">สาขาที่ชอบ: (ตอบได้มากกว่า 1 ข้อ)</label>
+                            <div class="mb-1 form-check form-check-inline ">
+                                <input type="checkbox" class="form-check-input" id="software" name="major"
+                                    value="software">
+                                <label class="form-check-label" for="software">ซอฟต์แวร์</label>
+                            </div>
+                            <div class="mb-1 form-check form-check-inline ">
+                                <input type="checkbox" class="form-check-input" id="hardware" name="major"
+                                    value="hardware">
+                                <label class="form-check-label" for="software">ฮาร์ดแวร์</label>
+                            </div>
+                            <div class="mb-1 form-check form-check-inline ">
+                                <input type="checkbox" class="form-check-input" id="network" name="major"
+                                    value="network">
+                                <label class="form-check-label" for="software">เน็ตเวิร์ค</label>
+                            </div>
+
+                            <!-- Select Dropdown -->
+                            <div class="mb-1">
+                                <label for="select" class="form-label">สายงานที่จะทำหลังเรียนจบ</label>
+                                <select class="form-select" id="job" name="job" required>
+                                    <option value="Programmer">Programmer</option>
+                                    <option value="industry">โรงงาน</option>
+                                    <option value="StartUp">StartUp</option>
+                                    <option value="MD">เรียนต่อปริญญาโท</option>
+                                    <option value="PHD">เรียนต่อปริญญาเอก</option>
+                                </select>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row bg-info p-3 w-100 bottom-0" style="position:fixed;">
+            <div class="col-12 text-end "><a href="https://cpe.ict.up.ac.th">&copy; cpe.ict.up.ac.th/wattanapong.su</a>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="js/prompt.js"></script> -->
+    <script>
+        element = document.querySelectorAll("h1.intro");
+        element[0].innerHTML = element[0].innerHTML.toUpperCase()
+        element[0].style.color = "red";
+
+        stickElement = document.querySelectorAll("#stick1,#stick2,#stick3");
+        stickElement.forEach(element => {
+            element.style.verticalAlign = "top";
+
+        });
+
+        messages = document.getElementsByClassName("message")
+        console.log(messages)
+        messages[0].style.display = "None"
+
+        let jobs = document.getElementsByName("job");
+        var option = document.createElement("option");
+        option.value = "other";
+        option.innerText = "อื่น ๆ";
+        jobs[0].appendChild(option);
+
+        element2 = document.getElementById("stick1");
+        element2.innerHTML = "Sticky Note 2, the detail not update yet A B C D E F G H I J"
+        element2.style.backgroundColor = "#FF0";
+    </script>
+</body>
+
+</html>

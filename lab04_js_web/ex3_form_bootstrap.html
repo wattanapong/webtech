@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM bootstrap</title>
+    <link rel="stylesheet" href="../lab02_css/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+
+        <form action="" method="post">
+
+            <!-- Text Input -->
+            <div class="mb-3">
+                <label for="text-input" class="form-label">Text Input:</label>
+                <input type="text" class="form-control" id="text-input" name="text-input" required>
+            </div>
+
+            <!-- Password Input -->
+            <div class="mb-3">
+                <label for="password-input" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password-input" name="password-input" required>
+            </div>
+
+            <!-- Textarea -->
+            <div class="mb-3">
+                <label for="textarea" class="form-label">Textarea:</label>
+                <textarea class="form-control" id="textarea" name="textarea" rows="4" required></textarea>
+            </div>
+
+            <!-- Radio Buttons -->
+            <div class="mb-3">
+                <label class="form-label">Gender:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+            </div>
+
+            <!-- Checkbox -->
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="subscribe" name="subscribe" value="subscribe">
+                <label class="form-check-label" for="subscribe">Subscribe to newsletter</label>
+            </div>
+
+            <!-- Select Dropdown -->
+            <div class="mb-3">
+                <label for="select" class="form-label">Select a fruit:</label>
+                <select class="form-select" id="select" name="select" required>
+                    <option value="apple">Apple</option>
+                    <option value="banana">Banana</option>
+                    <option value="orange">Orange</option>
+                </select>
+            </div>
+
+            <!-- File Input -->
+            <div class="mb-3">
+                <label for="file" class="form-label">Choose a file:</label>
+                <input type="file" class="form-control" id="file" name="file" accept=".jpg, .jpeg, .png" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
