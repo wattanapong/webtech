@@ -20,3 +20,13 @@ app.get('/student/:id', (req, res) =>{
     res.setHeader('Content-Type', 'text/html')
     res.send(`<h1>Student ID:${req.params['id']}</h1>`)
 });
+
+app.get('/address/:province-:amphur', (req, res) =>{
+    res.setHeader('Content-Type', 'text/html')
+    res.send(`<h1>Your address is ${req.params['amphur']}, ${req.params['province']}</h1>`)
+});
+
+app.get('/address/zipcode=:code', (req, res) =>{
+    res.setHeader('Content-Type', 'text/html')
+    res.send(`<h1>Your address zip-code is ${req.params['code']}</h1>`)
+});
