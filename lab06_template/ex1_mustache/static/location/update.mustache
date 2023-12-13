@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Location</title>
+</head>
+<body>
+  <h1>Submit Location</h1>
+  <form action="/location/update" method="post">
+    <input type="hidden" name="location_id" value="{{location_id}}" required>
+    <label for="location_name">Location Name:</label>
+    <input type="text" id="location_name" name="location_name" value="{{location_name}}" required>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

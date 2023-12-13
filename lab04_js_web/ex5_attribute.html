@@ -12,17 +12,17 @@
 <body>
     <div class="container-fluid ">
         <div class="row">
-            <h1>Image Gallery</h1>
+            <h1><div class="intro">Image Gallery</div></h1>
         </div>
 
         <div class="row">
             <div class="col-2"><button type="button" onclick="alert('สวัสดี')" class="btn btn-success">Alert</button>
             </div>
             <div class="col-2"><button class="btn btn-success addclick">A</button></div>
-            <div class="col-2"><button class="btn btn-success">B</button></div>
+            <div class="col-2"><button class="btn btn-success" onmouseenter="newid()">B</button></div>
             <div class="col-2"><button class="btn btn-success">C</button></div>
             <div class="col-2"><button class="btn btn-success">D</button></div>
-            <div class="col-2"><button class="btn btn-success">E</button></div>
+            <div class="col-2" id="lbl">!!!</div>
         </div>
 
         <!-- <div class="row gallery justify-content-center fixed-bottom">
@@ -48,6 +48,18 @@
     </div>
 
     <script src="js/attribute.js"></script>
+    <script>
+        newid = () =>{
+            // var lbl = document.getElementById('lbl')
+            // var main = document.createElement('h1')
+            // main.innerHTML = "Hello"
+            // lbl.appendChild(main)
+            intro = document.querySelector('h1 > .intro')
+            // intro.style.display = "None"
+            intro.disabled = true
+            // alert(intro.innerText)
+        }
+    </script>
 </body>
 
 </html>

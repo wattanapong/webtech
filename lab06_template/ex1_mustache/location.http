@@ -1,0 +1,16 @@
+# require REST Client extension
+# GET http://detector.wattanapong.com
+
+# GET http://localhost:3000
+
+
+POST http://localhost:3000/location/list
+Content-Type: application/x-www-form-urlencoded
+
+location_name=ICT1
+
+### 
+
+GET http://localhost:3000/location/list HTTP/1.1
+
+
