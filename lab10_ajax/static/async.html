@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Asynchronous</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .main-container {
+            max-width: 400px;
+            margin: auto;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container main-container">
+        <div class="text-center text-primary h1 mb-4">Now <label id="clock"></label></div>
+        <div class="text-center text-primary h1 mb-4">Now <label id="clock2"></label></div>
+    </div>
+
+    <script>
+        setInterval(clock, 1000)
+
+        function clock() {
+            let d = new Date();
+
+            h = d.getHours()
+            m = d.getMinutes()
+            s = d.getSeconds()
+
+            document.getElementById("clock").innerHTML =
+                h + ":" +
+                m + ":" +
+                s;
+
+            document.getElementById("clock2").innerHTML =
+                String(h).padStart(2) + ":" +
+                String(m).padStart(2,'0') + ":" +
+                String(s).padStart(2,'0');
+        }
+    </script>
+</body>
+
+</html>

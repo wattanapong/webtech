@@ -1,1 +1,1 @@
-This project comprises HTML, CSS, JavaScript, and Node.js components. All the code is part of the Web Technology course at the University of Phayao in Thailand, within the Computer Engineering program.
+This project comprises HTML, CSS, JavaScript, and Node.js components. All the code is part of the Web Technology course in Computer Engineering at the University of Phayao in Thailand.

@@ -1,2 +1,7 @@
 node_modules
+*.wattanapong.com*
+x.wattanapong.com
+test
+tmp
+hosting_nodejs
 **/node_modules
