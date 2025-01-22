@@ -1,14 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path')
-const mustacheExpress = require('mustache-express')
+// const mustacheExpress = require('mustache-express')
 
 const app = express();
 const port = 3000;
 
 app.set('views', `${__dirname}/static`);
-app.set('view engine', 'mustache');
-app.engine('mustache', mustacheExpress());
+app.set('view engine', 'ejs');
+// app.set('view engine', 'mustache');
+// app.engine('mustache', mustacheExpress());
 
 require('dotenv').config();
 
