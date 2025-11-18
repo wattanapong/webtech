@@ -5,13 +5,14 @@
   "main": "index_mysql.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index_mysql.js"
+    "dev": "nodemon --ext js,html,css index_mysql.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0",
+    "mysql2": "^3.15.3",
     "nodemon": "^3.1.11"
   }
 }

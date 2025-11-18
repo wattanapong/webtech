@@ -7,17 +7,18 @@ const port = 3000;
 // Create a MySQL connection pool
 const pool = mysql.createPool({
   host: 'localhost',
-  user: 'root',
+  user: 'webtech',
   password: '1234',
-  database: 'iot',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
+  database: 'classicmodels',
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/static/index.html');
 });
 
 // Simple SELECT query
-app.get('/locations', (req, res) => {
-  pool.query('SELECT * FROM location', (error, results, fields) => {
+app.get('/customers', (req, res) => {
+  pool.query('SELECT * FROM customers', (error, results, fields) => {
     if (error) {
       console.error(error);
       res.status(500).send('Error retrieving data from the database');
@@ -27,9 +28,13 @@ app.get('/locations', (req, res) => {
   });
 });
 
-app.post('/locations/:id', (req, res) => {
+app.get('/customers/insert', (req, res) => {
+  res.sendFile(__dirname + '/static/form.html')
+});
 
-  var sql = 'SELECT * FROM location WHERE location_id = '+req.params['id']
+app.get('/customers/:id', (req, res) => {
+
+  var sql = 'SELECT * FROM customers WHERE customerNumber = '+req.params['id']
   pool.query(sql, (error, results, fields) => {
     if (error) {
       console.error(error);
@@ -40,15 +45,19 @@ app.post('/locations/:id', (req, res) => {
   });
 });
 
+
+
 // Simple SELECT query
-app.post('/locations', (req, res) => {
+app.post('/customers', (req, res) => {
   const { latitude, longitude, name } = req.body;
 
-  // SQL query to insert data into the location table
-  const sql = 'INSERT INTO location (location_name) VALUES (?)';
+  // SQL query to insert data into the customers table
+  const attributes = '(customerNumber, customerName, contactLastName, contactFirstName, phone, addressLine1, city, state, country)';
+  const values = [498, 'Wattanapong Suttapak', 'Wattanapong', 'Suttapak', '123-4567', '19 M.2', 'Maeka', 'Phayao', 'Thailand'];
+  const sql = `INSERT INTO customers (${attributes}) VALUES (?)`;
 
   // Execute the query with the provided data
-  db.run(sql, [location_name], function(err) {
+  db.run(sql, values, function(err) {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
