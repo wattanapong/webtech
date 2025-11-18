@@ -1,0 +1,17 @@
+{
+  "name": "ex3_sql",
+  "version": "1.0.0",
+  "description": "- install module MySQL",
+  "main": "index_mysql.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index_mysql.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.11"
+  }
+}

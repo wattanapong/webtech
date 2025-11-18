@@ -17,8 +17,11 @@
 </head>
 <body>
     <div class="container-fluid">
+    <div class="alert alert-{{text}} text-center" role="alert">
+        {{msg}}
+    </div>
         <div class="row mt-5 text-center">
-            <div class="col-2">
+            <div class="col-3">
                 <ul style="list-style-type: none;">
                     <li onclick="render('main')">Home</li>
                     <li onclick="render('memberconsole')">Member</li>
@@ -27,7 +30,7 @@
                     <li onclick="render('about')">About us</li>
                 </ul>
             </div>
-            <div class="col-10">
+            <div class="col-9">
                 <div class="row content">
                     
                 </div>

@@ -7,27 +7,42 @@ const port = 3000;
 // Create a MySQL connection pool
 const pool = mysql.createPool({
   host: 'localhost',
-  user: 'root',
+  user: 'webtech',
   password: '1234',
-  database: 'iot',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
+  database: 'classicmodels',
 });
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/static/index.html');
+});
+
+tableNames = ['customers', 'orders', 'orderdetails', 'products']
+for (const tableName of tableNames) {
+  app.get('/' + tableName, (req, res) => {
+    pool.query('SELECT * FROM ' + tableName, (error, results, fields) => {
+      if (error) {
+        console.error(error);
+        res.status(500).send('Error retrieving data from the database');
+      } else {
+        res.json(results);
+      }
+    });
+  });
+}
 
 // Simple SELECT query
-app.get('/locations', (req, res) => {
-  pool.query('SELECT * FROM location', (error, results, fields) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send('Error retrieving data from the database');
-    } else {
-      res.json(results);
-    }
-  });
-});
+// app.get('/customers', (req, res) => {
+//   pool.query('SELECT * FROM customers', (error, results, fields) => {
+//     if (error) {
+//       console.error(error);
+//       res.status(500).send('Error retrieving data from the database');
+//     } else {
+//       res.json(results);
+//     }
+//   });
+// });
 
-app.post('/locations/:id', (req, res) => {
+app.post('/customers/:id', (req, res) => {
 
   var sql = 'SELECT * FROM location WHERE location_id = '+req.params['id']
   pool.query(sql, (error, results, fields) => {
@@ -41,7 +56,7 @@ app.post('/locations/:id', (req, res) => {
 });
 
 // Simple SELECT query
-app.post('/locations', (req, res) => {
+app.post('/customers', (req, res) => {
   const { latitude, longitude, name } = req.body;
 
   // SQL query to insert data into the location table

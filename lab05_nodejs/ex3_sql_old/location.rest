@@ -1,0 +1,11 @@
+# require REST Client extension
+
+POST http://localhost:3000/locations
+Content-Type: application/x-www-form-urlencoded
+
+location_name=ICT1
+
+### 
+
+GET http://localhost:3000/locations HTTP/1.1
+

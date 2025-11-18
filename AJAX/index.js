@@ -34,7 +34,11 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 app.get('/index', (req, res) => {
-    res.render('site/index')
+    
+    const msg = req.query.msg
+    const text = req.query.text
+    console.log(msg)
+    res.render('site/index',{'msg':msg, 'text':text})
 })
 
 app.get('/', (req, res) => {
@@ -60,7 +64,7 @@ app.post('/register', (req, res) =>{
 })
 
 app.post('/verify', (req, res) =>{
-    const sql = "SELECT * FROM user WHERE username = ? AND password = ?"
+    const sql = "SELECT * FROM member WHERE username = ? AND password = ?"
     const {username,password} = req.body
     pool.query(sql, [username, md5(password)], (err, result) =>{
         if (err){
@@ -68,12 +72,35 @@ app.post('/verify', (req, res) =>{
         }else{
             if (result.length == 0){
                 msg= 'wrong username and password'
+                text = 'danger'
             }else{
                 msg = 'welcome ' + result[0]['username']
+                text = 'primary'
                 res.cookie('name', username, {maxAge: 1000000})
             }
 
-            res.redirect('/index?msg='+msg)
+            res.redirect('/index?msg='+msg+'&text='+text)
+        }
+    })
+})
+
+app.post('/verifyapi', (req, res) =>{
+    const sql = "SELECT * FROM member WHERE username = ? AND password = ?"
+    const {username,password} = req.body
+    pool.query(sql, [username, md5(password)], (err, result) =>{
+        if (err){
+            return res.status(500).json({'error': err.message})
+        }else{
+            if (result.length == 0){
+                msg= 'wrong username and password'
+                text = 'danger'
+                
+            }else{
+                msg = 'welcome ' + result[0]['username']
+                text = 'primary'
+                // res.cookie('name', username, {maxAge: 1000000})
+            }
+            res.json({msg:msg, text:text})
         }
     })
 })
