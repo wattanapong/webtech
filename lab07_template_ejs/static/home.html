@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Webpage</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/sticky.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+
+        <!-- header -->
+      <div class="row bg-primary bg-gradient p-4">
+        <h1 class="text-light text-center">
+          ยินดีต้อนรับเข้าสู่ Web Technology
+        </h1>
+      </div>
+      <!-- header -->
+
+      <!-- body -->
+      <div class="row">
+        <input type="checkbox" id="navbar-toggle-cbox" />
+        <div class="navbar-header">
+          <label
+            for="navbar-toggle-cbox"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </label>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+        <div class="col-2 bg-light p-3" style="height: 83vh">
+          <ul class="p-0 mobile-hide">
+            <h3 class="text-center text-primary bg-white p-0">Menu</h3>
+            <li>Home</li>
+            <li>News</li>
+            <li>Contact Us</li>
+            <li>About Us</li>
+          </ul>
+        </div>
+        <div class="col-10 text-center pt-5">
+          <div class="main-layout">
+            <div class="title">This is the example of sticky note.</div>
+            <div id="stick1">Sticky Note 1</div>
+            <div id="stick2">Stick Note 2</div>
+            <div id="stick3">Stick Note 3</div>
+            <div class="message">This part is the bottom of example text.</div>
+          </div>
+        </div>
+      </div>
+      <!-- body -->
+
+      <!-- footer -->
+      <div class="row bg-info p-3 w-100 bottom-0" style="position: fixed">
+        <div class="col-12">&copy; 2024 Your Website Name</div>
+      </div>
+      <!-- footer -->
+
+    </div>
+
+  </body>
+</html>

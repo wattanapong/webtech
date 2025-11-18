@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 post http://localhost:3000/verify  HTTP/1.1
 content-type: application/json
 
@@ -19,3 +20,16 @@ content-type: application/json
     "username": "test",
     "password": "1234"
 }
+=======
+post http://localhost:3000/verify  HTTP/1.1
+content-type: application/json
+
+{
+    "username": "watta1",
+    "password": "1234"
+}
+
+###
+
+get http://localhost:3000/product  HTTP/1.1
+>>>>>>> a0fca42fe7b13eb64a7bb48cd5e10aa4e2e3520b

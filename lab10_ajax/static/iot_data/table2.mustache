@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Table Example</title>
+  <!-- Bootstrap CSS -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container mt-5">
+
+    <h2 class="mb-4">iot data</h2>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>device id</th>
+          <th>value</th>
+          <th>location id</th>
+          <th>timestamp</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        {{#data}}
+        <tr>
+          <td>{{id}}</td>
+          <td>{{value}}</td>
+          <td>{{device_id}}</td>
+          <td>{{location_id}}</td>
+          <td>{{timestamp}}</td>
+        </tr>
+        {{/data}}
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-primary" onclick="previousPage()">Previous</button>
+      <button class="btn btn-primary" onclick="nextPage()">Next</button>
+    </div>
+  </div>
+
+  <script>
+    const rowsPerPage = 10;
+    let currentPage = 0;
+
+    function previousPage() {
+      currentPage -= rowsPerPage
+      start = currentPage
+      end = start + rowsPerPage
+      list()
+    }
+
+    function nextPage() {
+      currentPage += rowsPerPage
+      start = currentPage
+      end = start + rowsPerPage
+      list()
+    }
+
+    async function list() {
+      const response = await fetch("/iot_data/list?start=" + start + "&end=" + end);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      data = await response.json();
+
+      tableData = '';
+      for (i = 0; i < data.length; i++) {
+        tableData += '<tr>';
+        tableData += '<td>' + data[i].id + '</td>';
+        tableData += '<td>' + data[i].value + '</td>';
+        tableData += '<td>' + data[i].device_id + '</td>';
+        tableData += '<td>' + data[i].location_id + '</td>';
+        tableData += '<td>' + data[i].timestamp + '</td>';
+        tableData += '</tr>';
+      }
+      const tableBody = document.getElementById('tableBody');
+      tableBody.innerHTML = tableData
+
+    }
+
+    start = 0
+    end = 10
+
+  </script>
+
+</body>
+
+</html>
