@@ -12,22 +12,30 @@ body {
 }
 
 header {
-    background-color: rgb(236, 250, 255);
-    color: rgb(0, 0, 255);
+    background-color: rgb(121, 78, 241);
+    color: white;
     /* padding: 100px 50px 10px 0px; */
     padding: 10px;
     text-align: center;
 }
 
 aside {
-    background-color: #f4f4f4;
+    background-color: rgb(236, 250, 255);
     float: left;
     width: 150px;
     height: 80vh;
     padding: 20px;
 }
 
+@media (max-width:500px) {
+    aside {
+        width: 80px;
+    }
+}
+
+
 main {
+    text-align: center;
     margin-left: 150px;
     padding: 20px;
     height: 80vh;

@@ -1,25 +1,25 @@
-var fruits = { 0: 'Apple', 1: 'Papaya', 2: 'Orange', 3: 'Banana' }
+// var fruits = { 0: 'Apple', 1: 'Papaya', 2: 'Orange', 3: 'Banana' }
 
-for (i = 0; i < Object.keys(fruits).length; i++) {
-    console.log("fruits[%d] = %s", i, fruits[i])
-}
+// for (i = 0; i < Object.keys(fruits).length; i++) {
+//     console.log("fruits[%d] = %s", i, fruits[i])
+// }
 
-for ([index, item] of Object.entries(fruits)) {
-    console.log("fruits[%d] = %s", index, item)
-}
+// for ([index, item] of Object.entries(fruits)) {
+//     console.log("fruits[%d] = %s", index, item)
+// }
 
-for (index in Object.values(fruits)) {
-    console.log("fruits[%d] = %s", index, fruits[index])
-}
+// for (index in Object.values(fruits)) {
+//     console.log("fruits[%d] = %s", index, fruits[index])
+// }
 
-Object.entries(fruits).forEach(entry => {
-    [index, item] = entry
-    console.log("fruits[%d] = %s", index, item)
-})
+// Object.entries(fruits).forEach(entry => {
+//     [index, item] = entry
+//     console.log("fruits[%d] = %s", index, item)
+// })
 
-for (item of Object.values(fruits)) {
-    console.log("fruit = %s", item)
-}
+// for (item of Object.values(fruits)) {
+//     console.log("fruit = %s", item)
+// }
 
 
 
@@ -34,8 +34,18 @@ for (item of Object.values(fruits)) {
 //     console.log("%d x %d = %d", n, i, n*i)
 // })
 
+// iarray.forEach(
+//     function(i){
+//         console.log("%d x %d = %d", 2, i, 2*i)
+//     }
+// )
+
 // var iarray = Array.from(Array(10).keys())
-// console.log(iarray.length)
+// iarray.forEach(
+//     function(i){
+//         console.log("%d x %d = %d", 2, i, 2*i)
+//     }
+// )
 
 
 

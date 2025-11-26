@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Webpage</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/sticky.css">
 </head>
+
 <body>
-    
-    <header class="bg-success p-3 text-center text-white ">
+
+    <header>
         <h1>Web Technology</h1>
     </header>
 
@@ -17,14 +20,19 @@
         <ul>
             <li>Home</li>
             <li>News</li>
-            <li>Contact Us</li> 
+            <li>Contact Us</li>
             <li>About Us</li>
         </ul>
     </aside>
 
     <main>
-        <h2>Main Content</h2>
-        <!-- Add your main content here -->
+        <div class="main-layout">
+            <div class="title">This is the example of sticky note.</div>
+            <div id="stick1">Sticky Note 1</div>
+            <div id="stick2">Stick Note 2</div>
+            <div id="stick3">Stick Note 3</div>
+            <div class="message">This part is the bottom of example text.</div>
+        </div>
     </main>
 
     <footer>
@@ -32,4 +40,5 @@
     </footer>
 
 </body>
+
 </html>
