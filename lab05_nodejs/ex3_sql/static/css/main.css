@@ -1,0 +1,22 @@
+li{
+    list-style-type: none;
+    margin: 1px auto;
+    padding: 5px;
+    background-color: rgb(229, 229, 248);
+}
+
+li:hover{
+    background-color: rgb(109, 41, 245);
+    color:rgb(228, 228, 237);
+}
+
+a{
+    text-decoration: none;
+}
+
+#navbar-toggle-cbox {
+    display:none
+  }
+  #navbar-toggle-cbox:checked ~ .collapse {
+      display: block;
+  }
