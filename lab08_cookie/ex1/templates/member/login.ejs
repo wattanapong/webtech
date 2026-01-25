@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <title>Login Form</title>
+    <script>
+        <% if (registerStatus) { %>
+            alert("<%= registerStatus %>");
+        <% } %>
+    </script>
     <style>
         body {
             background-color: #f8f9fa;
@@ -14,28 +19,35 @@
             max-width: 400px;
             margin: auto;
             margin-top: 100px;
+            background-color: rgb(165, 255, 255);
+            padding: 1rem;
         }
     </style>
 </head>
 <body>
 
-<div class="container login-container">
+<div class="container login-container rounded">
     <h2 class="text-center mb-4">Login</h2>
     <form action="/member/verify" method="post">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter your username" name="username" required>
+            <input type="text" class="form-control" id="username" value="<%=locals?.username %>" 
+            placeholder="Enter your username" name="username" required>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password" required>
+            <input type="password" class="form-control" id="password" 
+            placeholder="Enter your password" name="password" required>
         </div>
          <!-- <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="rememberMe">
             <label class="form-check-label" for="rememberMe">Remember me</label>
         </div>  -->
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-
+        <div class="mb-3 d-flex justify-content-between">
+            <a href="/member/register" class="btn btn-link">Register</a>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </div>
+        
         <div class="mb-3 text-danger">
             <%=locals?.msg?msg:""%>
         </div>

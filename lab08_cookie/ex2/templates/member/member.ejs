@@ -11,11 +11,9 @@
 <body>
     <div class="container-fluid">
         <div class="row bg-primary bg-gradient p-4">
-            <h1 class=" text-light text-center">คิดถึงฉันไหม
-            {{#username}}
-                {{username}}
-                    <a href="/member/logout" class="text-light text-end">Logout</a>
-            {{/username}}
+            <h1 class=" text-light text-center">
+                ยินดีต้อนรับ <%=locals?.username?username:""%> 
+                <a href="/member/logout" class="text-light text-end">Logout</a>
             </h1>
         </div>
         <div class="row">
