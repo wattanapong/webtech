@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= action === 'edit' ? 'แก้ไขโปรไฟล์ลูกค้า' : 'โปรไฟล์ลูกค้า' %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <form action="/customers/update" method="POST">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-header <%= action === 'edit' ? 'bg-warning text-dark' : 'bg-primary text-white' %> text-center py-3">
+                            <h1 class="h3 mb-0">
+                                <%= action === 'edit' ? 'แก้ไขข้อมูลลูกค้า' : 'โปรไฟล์ลูกค้า' %>
+                            </h1>
+                        </div>
+        
+                        <div class="card-body p-4">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <p class="mb-1 text-muted small">ชื่อลูกค้า</p>
+                                    <% if (action === 'edit') { %>
+                                        <input type="text" name="customerName" class="form-control" value="<%= customer.customerName %>">
+                                    <% } else { %>
+                                        <h2 class="h5 text-primary"><%= customer.customerName %></h2>
+                                    <% } %>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mb-1 text-muted small">รหัสลูกค้า</p>
+                                    <h2 class="h5"><%= customer.customerNumber %></h2>
+                                    <input type="hidden" name="customerNumber" value="<%= customer.customerNumber %>">
+                                </div>
+                            </div>
+        
+                            <hr>
+        
+                            <div class="row">
+                                <div class="col-lg-6 border-end">
+                                    <h4 class="h5 mb-3 text-secondary">ข้อมูลติดต่อและที่อยู่</h4>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small">โทรศัพท์:</label>
+                                        <% if (action === 'edit') { %>
+                                            <input type="text" name="phone" class="form-control" value="<%= customer.phone %>">
+                                        <% } else { %>
+                                            <p class="form-control-plaintext"><%= customer.phone %></p>
+                                        <% } %>
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small">ที่อยู่บรรทัดที่ 1:</label>
+                                        <% if (action === 'edit') { %>
+                                            <input type="text" name="addressLine1" class="form-control" value="<%= customer.addressLine1 %>">
+                                        <% } else { %>
+                                            <p class="form-control-plaintext"><%= customer.addressLine1 %></p>
+                                        <% } %>
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small">เมือง:</label>
+                                        <% if (action === 'edit') { %>
+                                            <input type="text" name="city" class="form-control" value="<%= customer.city %>">
+                                        <% } else { %>
+                                            <p class="form-control-plaintext"><%= customer.city %></p>
+                                        <% } %>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small">ประเทศ:</label>
+                                        <% if (action === 'edit') { %>
+                                            <input type="text" name="country" class="form-control" value="<%= customer.country %>">
+                                        <% } else { %>
+                                            <p class="form-control-plaintext"><%= customer.country %></p>
+                                        <% } %>
+                                    </div>
+                                </div>
+        
+                                <div class="col-lg-6 ps-lg-4">
+                                    <h4 class="h5 mb-3 text-secondary">ข้อมูลการเงินและการขาย</h4>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small">วงเงินเครดิต:</label>
+                                        <% if (action === 'edit') { %>
+                                            <input type="number" name="creditLimit" class="form-control" value="<%= customer.creditLimit %>">
+                                        <% } else { %>
+                                            <p class="form-control-plaintext"><%= customer.creditLimit %></p>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer bg-light text-end py-3">
+                            <% if (action === 'edit') { %>
+                                <a href="/customers/list" class="btn btn-secondary me-2">ยกเลิก</a>
+                                <button type="submit" class="btn btn-success">บันทึกการเปลี่ยนแปลง</button>
+                            <% } else { %>
+                                <a href="/customers/list" class="btn btn-outline-secondary me-2">กลับไปที่รายการ</a>
+                                <a href="/customers/edit/<%= customer.customerNumber %>" class="btn btn-warning">แก้ไขข้อมูล</a>
+                            <% } %>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

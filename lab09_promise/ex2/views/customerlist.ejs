@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management | Pure CSS & Fetch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card { border: none; border-radius: 10px; box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); }
+        .table thead th { background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; color: #495057; font-weight: 600; }
+        .badge-active { background-color: #d1e7dd; color: #0f5132; padding: 0.5em 0.8em; border-radius: 50rem; font-size: 0.75rem; }
+        .badge-inactive { background-color: #f8d7da; color: #842029; padding: 0.5em 0.8em; border-radius: 50rem; font-size: 0.75rem; }
+        /* Custom spinner since we aren't using JS-based components */
+        .loading-spinner { width: 3rem; height: 3rem; border: 0.3em solid #f3f3f3; border-top: 0.3em solid #0d6efd; border-radius: 50%; animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <div class="row mb-4 align-items-center">
+        <div class="col">
+            <h2 class="fw-bold">Customer Directory</h2>
+        </div>
+        <div class="col-auto">
+            <select id="limitSelector" class="form-select">
+                <option value="5">Show 5</option>
+                <option value="10" selected>Show 10</option>
+                <option value="20">Show 20</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="card p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th class="ps-4">No.</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Location</th>
+                        <th>Credit Limit</th>
+                        <th>Status</th>
+                        <th class="text-center pe-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr>
+                        <td colspan="7" class="text-center py-5">
+                            <div class="loading-spinner"></div>
+                            <p class="text-muted mt-2">Loading customer data...</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-4 px-2">
+        <div>
+            <span class="text-muted" id="countDisplay">Showing page 1</span>
+        </div>
+        <nav>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary" id="btnPrev">Previous</button>
+                <button type="button" class="btn btn-primary disabled" id="pageIndicator">1</button>
+                <button type="button" class="btn btn-outline-primary" id="btnNext">Next</button>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<script>
+    let state = {
+        page: 1,
+        limit: 10
+    };
+
+    async function fetchData() {
+        const tbody = document.getElementById('tableBody');
+        
+        try {
+            const response = await fetch(`/customers/json?page=${state.page}&limit=${state.limit}`);
+            const data = await response.json();
+
+            renderTable(data);
+            updateUI();
+        } catch (error) {
+            tbody.innerHTML = `<tr><td colspan="7" 
+                class="text-center text-danger py-4">Error loading data.
+                 Please check connection.</td></tr>`;
+        }
+    }
+
+    function renderTable(customers) {
+        const tbody = document.getElementById('tableBody');
+        
+        if (!customers || customers.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7" 
+                class="text-center py-4 text-muted">No more customers found.</td></tr>`;
+            return;
+        }
+
+        tbody.innerHTML = customers.map(c => `
+            <tr>
+                <td class="ps-4 text-secondary">#${c.customerNumber}</td>
+                <td><span class="fw-semibold">${c.customerName}</span></td>
+                <td>${c.phone}</td>
+                <td><small>${c.city}, ${c.country}</small></td>
+                <td>$${Number(c.creditLimit).toLocaleString()}</td>
+                <td>
+                    <span class="${c.customerStatus === 'Active' ? 'badge-active' : 'badge-inactive'}">
+                        ${c.customerStatus}
+                    </span>
+                </td>
+                <td class="text-center pe-4">
+                    <a href="/customers/${c.customerNumber}" class="btn btn-sm btn-light border">View</a>
+                    <a href="/customers/edit/${c.customerNumber}" class="btn btn-sm btn-light border">Edit</a>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    function updateUI() {
+        document.getElementById('pageIndicator').innerText = state.page;
+        document.getElementById('countDisplay').innerText = `Showing Page ${state.page}`;
+        document.getElementById('btnPrev').disabled = state.page === 1;
+    }
+
+    // Event Listeners
+    document.getElementById('btnPrev').addEventListener('click', () => {
+        if (state.page > 1) {
+            state.page--;
+            fetchData();
+        }
+    });
+
+    document.getElementById('btnNext').addEventListener('click', () => {
+        state.page++;
+        fetchData();
+    });
+
+    document.getElementById('limitSelector').addEventListener('change', (e) => {
+        state.limit = e.target.value;
+        state.page = 1;
+        fetchData();
+    });
+
+    // Initial Load
+    window.onload = fetchData;
+</script>
+
+</body>
+</html>
