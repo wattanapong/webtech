@@ -41,7 +41,6 @@
                         <th>Contact</th>
                         <th>Location</th>
                         <th>Credit Limit</th>
-                        <th>Status</th>
                         <th class="text-center pe-4">Actions</th>
                     </tr>
                 </thead>
@@ -109,11 +108,6 @@
                 <td>${c.phone}</td>
                 <td><small>${c.city}, ${c.country}</small></td>
                 <td>$${Number(c.creditLimit).toLocaleString()}</td>
-                <td>
-                    <span class="${c.customerStatus === 'Active' ? 'badge-active' : 'badge-inactive'}">
-                        ${c.customerStatus}
-                    </span>
-                </td>
                 <td class="text-center pe-4">
                     <a href="/customers/${c.customerNumber}" class="btn btn-sm btn-light border">View</a>
                     <a href="/customers/edit/${c.customerNumber}" class="btn btn-sm btn-light border">Edit</a>

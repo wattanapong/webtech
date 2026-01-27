@@ -95,10 +95,10 @@
 
                         <div class="card-footer bg-light text-end py-3">
                             <% if (action === 'edit') { %>
-                                <a href="/customers/list" class="btn btn-secondary me-2">ยกเลิก</a>
+                                <a href="/customers" class="btn btn-secondary me-2">ยกเลิก</a>
                                 <button type="submit" class="btn btn-success">บันทึกการเปลี่ยนแปลง</button>
                             <% } else { %>
-                                <a href="/customers/list" class="btn btn-outline-secondary me-2">กลับไปที่รายการ</a>
+                                <a href="/customers" class="btn btn-outline-secondary me-2">กลับไปที่รายการ</a>
                                 <a href="/customers/edit/<%= customer.customerNumber %>" class="btn btn-warning">แก้ไขข้อมูล</a>
                             <% } %>
                         </div>
