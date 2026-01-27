@@ -19,7 +19,7 @@ router.get('/login', (req, res) => {
     if (username)
         res.redirect('member')
     else
-        res.render('member/login')
+        res.render('member/login?msg='+msg)
 });
 
 router.get('/register', (req, res) => {
@@ -75,15 +75,11 @@ router.post('/verify', (req,res) => {
 })
 
 router.get('/member', (req, res) => {
-    // first example
     const username = req.cookies.username;
-    res.render('member/member', {username:username})
-
-    // second example
-    // if (username)
-    //     res.render('member/member', {username:username})
-    // else
-    //     res.redirect('/member/login')
+    if (username)
+        res.render('member/member', {username:username})
+    else
+        res.redirect('/member/login')
 });
 
 router.get('/logout', (req, res) => {
