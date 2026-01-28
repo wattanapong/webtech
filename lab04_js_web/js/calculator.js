@@ -49,3 +49,13 @@ cal = (n1, n2, oper) => {
         return n1 / n2
 }
 
+document.body.addEventListener('keydown', (event) => {
+    console.log('Key pressed:', event.key);
+    console.log('Key code:', event.code);
+    keys = {'7':0,'8':1,'9':2,'/':3,'4':4,'5':5,'6':6,'*':7,
+        '1':8,'2':9,'3':10,'-':11,
+        '0':12,'C':13,'=':15,'Enter':15,'+':14}
+
+     digits[keys[event.key]].click();
+     
+});

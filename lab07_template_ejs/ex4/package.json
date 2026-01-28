@@ -5,7 +5,7 @@
   
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
+    "dev": "nodemon index.js"
   },
   
   "dependencies": {
@@ -19,5 +19,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": ""
 }

@@ -21,13 +21,13 @@ app.get('/test', (req, res) =>{
     res.send('<h1>Test Page</h1>')
 });
 
-app.get('*',(req,res)=>{
-  res.redirect('/main');
-})
-
-// app.get('*', function(req, res){
-//   // res.status(404).send('Please mercy us, don\'t attack.');
-//   html = '<center><img src="/img/404.jpg" height="100%"></center>'
-//   res.status(404).send(html);
+// app.get('*',(req,res)=>{
+//   res.redirect('/main');
 // })
+
+app.get('*', function(req, res){
+  // res.status(404).send('Please mercy us, don\'t attack.');
+  html = '<center><img src="/img/404.jpg" height="100%"></center>'
+  res.status(404).send(html);
+})
 

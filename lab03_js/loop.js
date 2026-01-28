@@ -23,16 +23,17 @@
 
 
 
-// var n = 2
+var n = 2
 
 // for(i=0;i<13;i++){
 //     console.log("%d x %d = %d", n, i, n*i)
 // }
 
 // var iarray = [0,1,2,3,4,5,6,7,8,9,10,11,12]
-// iarray.forEach((i)=>{
-//     console.log("%d x %d = %d", n, i, n*i)
-// })
+var iarray = [3,10,9]
+iarray.forEach((i)=>{
+    console.log("%d x %d = %d", n, i, n*i)
+});
 
 // iarray.forEach(
 //     function(i){

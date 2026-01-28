@@ -5,8 +5,9 @@ var students = {
     6602003: {name: "Charlie", age:19, major: "Computer Engineering"}
 }
 for (var id in students){
+    std = students[id]
     console.log("ID: %s, Name: %s, Major: %s, Age: %d", id, 
-        students[id]["name"], students[id]["major"], students[id]["age"])
+        std["name"], std["major"], std["age"])
 }
 
  

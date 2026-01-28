@@ -15,9 +15,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Create thumbnail
         const thumbnailElement = document.createElement('div');
         thumbnailElement.classList.add('thumbnail');
+
         const thumbnailImg = document.createElement('img');
         thumbnailImg.src = url;
+
         thumbnailImg.addEventListener('click', () => displayImage(index));
+
         thumbnailElement.appendChild(thumbnailImg);
         thumbnailsContainer.appendChild(thumbnailElement);
 

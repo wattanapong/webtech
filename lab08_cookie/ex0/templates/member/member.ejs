@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Webpage</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="css/main3.css">
-    <link rel="stylesheet" href="css/sticky.css">
+    <title>Miss me??</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/sticky.css">
 </head>
 <body>
     <div class="container-fluid">
         <div class="row bg-primary bg-gradient p-4">
-            <h1 class=" text-light text-center">ยินดีต้อนรับเข้าสู่ Web Technology</h1>
+            <h1 class=" text-light text-center">
+                ยินดีต้อนรับ <%=locals?.username?username:""%> 
+                <a href="/member/logout" class="text-light text-end">Logout</a>
+            </h1>
         </div>
         <div class="row">
     <input type="checkbox" id="navbar-toggle-cbox">

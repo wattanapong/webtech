@@ -7,7 +7,7 @@
     "nodemon": "^3.1.11"
   },
   "scripts": {
-    "start": "nodemon index_simple.js",
-    "debug": "nodemon -e static,.js,.ejs index_mysql_env.js"
+    "start": "nodemon index.js",
+    "debug": "nodemon -e static,.js,.ejs index.js"
   }
 }
