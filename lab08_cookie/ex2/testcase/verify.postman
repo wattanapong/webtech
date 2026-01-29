@@ -1,0 +1,21 @@
+const resJson = pm.response.json();
+const expected = pm.iterationData.get("expected");
+
+if (!pm.collectionVariables.get("successVerify")) {
+pm.collectionVariables.set("successVerify", 0);
+pm.collectionVariables.set("failedVerify", 0);
+pm.collectionVariables.set("errorVerify", 0);
+}
+let counters = {
+    success: "successVerify",
+    failed: "failedVerify",
+    error: "errorVerify"
+};
+
+let key = counters[expected];
+let current = Number(pm.collectionVariables.get(key));
+pm.collectionVariables.set(key, current + 1);
+
+pm.test(`Expect ${expected}`, function () {
+    pm.expect(resJson.msg).to.equal(expected);
+});

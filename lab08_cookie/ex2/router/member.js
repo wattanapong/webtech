@@ -47,6 +47,72 @@ router.post('/register', (req, res)=> {
     })
 })
 
+router.post('/register-api', (req, res)=> {
+    const {username, password} = req.body
+    const sql = "INSERT INTO user (username, password) VALUES (?, ?)"
+    
+    console.log(username, password)
+
+    if (username == '' || password == ''){
+        res.json({'msg': 'failed'})
+        return
+    }
+        
+    if (!username || !password){
+        res.json({'msg': 'failed'})
+        return
+    }
+
+    if (username.includes(' ') || password.includes(' ')){
+        res.json({'msg': 'failed'})
+        return
+    }
+
+    if (username.length < 4 || password.length < 4){
+        res.json({'msg': 'failed'})
+        return
+    }
+
+    bcrypt.hash(password, 12, (err, hash) => {
+        if (err){
+            console.log(err)
+            res.json({'msg': 'error'})
+        }else{
+            pool.query(sql, [username, hash], (err, results) => {
+                if (err){
+                    console.log(err)
+                    res.json({'msg': 'failed'})
+                }else{
+                    res.json({'msg': 'success'})
+                }
+            })
+        }
+    })
+})
+
+router.post('/verify-api', (req,res) => {
+    const {username, password} = req.body
+    const sql = "SELECT * FROM user WHERE username = ?"
+
+    pool.query(sql, username, (err, results) =>{
+        if (err){
+            console.log(err)
+            res.json({'msg':'failed'})
+        }else{
+            if (results.length == 0)
+                res.json({'msg':'failed'})
+            else{
+                if (!bcrypt.compareSync(password, results[0].password)){
+                    res.json({'msg':'failed'})
+                    return
+                }
+                res.json({'msg':'success'})
+            }
+
+        }
+    })
+})
+
 
 router.post('/verify', (req,res) => {
     const {username, password} = req.body

@@ -1,0 +1,21 @@
+const resJson = pm.response.json();
+const expected = pm.iterationData.get("expected");
+
+if (!pm.collectionVariables.get("successRegister")) {
+pm.collectionVariables.set("successRegister", 0);
+pm.collectionVariables.set("failedRegister", 0);
+pm.collectionVariables.set("errorRegister", 0);
+}
+let counters = {
+    success: "successRegister",
+    failed: "failedRegister",
+    error: "errorRegister"
+};
+
+let key = counters[expected];
+let current = Number(pm.collectionVariables.get(key));
+pm.collectionVariables.set(key, current + 1);
+
+pm.test(`Expect ${expected}`, function () {
+    pm.expect(resJson.msg).to.equal(expected);
+});
