@@ -19,7 +19,7 @@ router.get('/login', (req, res) => {
     if (username)
         res.redirect('member')
     else
-        res.render('member/login?msg='+msg)
+        res.render('member/login', {registerStatus: msg})
 });
 
 router.get('/register', (req, res) => {

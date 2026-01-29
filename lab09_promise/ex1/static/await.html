@@ -21,25 +21,33 @@
 <body>
 
     <div class="container main-container">
-        <div class="text-center text-primary h1 mb-4">Demo: <label id="demo"></label></div>
-        <div class="text-center text-primary h1 mb-4">Run: <label id="run"></label></div>
+        <div class="text-center text-primary h1 mb-4 border">
+            Bangkok Time: <label id="bangkok"></label>
+        </div>
+        <div class="text-center text-success h1 mb-4 border">
+            Singapore Time: <label id="singapore"></label>
+        </div>
+        <div class="text-center text-warning h1 mb-4 border">
+            New York Time: <label id="newyork"></label>
+        </div>
     </div>
 
     <script>
-        async function myDisplay() {
-            const response = await fetch("/time");
+        t = 1
+        async function myDisplay(location) {
+            const response = await fetch(`/time?location=${location}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            document.getElementById("demo").innerHTML = await response.text();
+            document.getElementById(location).innerHTML = await response.text();
         }
 
         setInterval(()=>{
-            myDisplay();
+            myDisplay('bangkok');
+            if (t % 2 == 0)  myDisplay('singapore');
+            if (t % 3 == 0) myDisplay('newyork');
+            t++;
         }, 1000)
-
-        document.getElementById("run").innerHTML = "<h2 class='text-success mb-4'>Running...</h2>";
-
     </script>
 </body>
 

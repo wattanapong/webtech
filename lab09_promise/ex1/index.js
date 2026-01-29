@@ -54,21 +54,30 @@ app.get('/promise_ex1', (req, res) =>{
 })
 
 app.get("/time", (req, res) => {
-  let d = new Date();
+  let { location } = req.query;
 
-  h = d.getHours();
-  m = d.getMinutes();
-  s = d.getSeconds();
+  const timeZones = {
+    bangkok: "Asia/Bangkok",
+    singapore: "Asia/Singapore",
+    newyork: "America/New_York",
+  };
 
-  time =
-    String(h).padStart(2) +
-    ":" +
-    String(m).padStart(2, "0") +
-    ":" +
-    String(s).padStart(2, "0");
+  if (!location || !timeZones[location.toLowerCase()]) {
+    location = 'bangkok';
+  }
+
+  const timeZone = timeZones[location.toLowerCase()];
+  const now = new Date();
+
+  const time = new Intl.DateTimeFormat("en-GB", {
+    timeZone,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  }).format(now);
 
   res.send(time);
-  res.end();
 });
 
 app.listen(port, () => {

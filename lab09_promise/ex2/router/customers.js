@@ -30,22 +30,14 @@ router.get('/edit/:customerNumber', (req, res) => {
 router.post('/update', (req, res) => {
     const sql = `
       UPDATE customers
-      SET customerName = ?,
-          phone = ?,
-          addressLine1 = ?,
-          city = ?,
-          country = ?,
-          creditLimit = ?
+      SET customerName = ?, phone = ?, addressLine1 = ?,
+          city = ?, country = ?, creditLimit = ? 
       WHERE customerNumber = ?
     `;
     console.log(req.body)
     const values = [
-      req.body.customerName,
-      req.body.phone,
-      req.body.addressLine1,
-      req.body.city,
-      req.body.country,
-      Number(req.body.creditLimit),
+      req.body.customerName, req.body.phone, req.body.addressLine1,
+      req.body.city, req.body.country,  Number(req.body.creditLimit),
       Number(req.body.customerNumber) // used for WHERE
     ];
   
@@ -53,7 +45,6 @@ router.post('/update', (req, res) => {
       if (err) {
         return res.status(500).json({ error: err.message });
       }
-  
       res.redirect(`/customers/${req.body.customerNumber}`); 
     });
   });

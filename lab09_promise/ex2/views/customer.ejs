@@ -12,7 +12,9 @@
             <div class="col-lg-8 col-md-10">
                 <form action="/customers/update" method="POST">
                     <div class="card shadow-lg border-0">
-                        <div class="card-header <%= action === 'edit' ? 'bg-warning text-dark' : 'bg-primary text-white' %> text-center py-3">
+                        <div class="card-header 
+                        <%= action === 'edit' ? 'bg-warning text-dark' : 'bg-primary text-white' %>
+                             text-center py-3">
                             <h1 class="h3 mb-0">
                                 <%= action === 'edit' ? 'แก้ไขข้อมูลลูกค้า' : 'โปรไฟล์ลูกค้า' %>
                             </h1>
@@ -23,7 +25,8 @@
                                 <div class="col-md-6">
                                     <p class="mb-1 text-muted small">ชื่อลูกค้า</p>
                                     <% if (action === 'edit') { %>
-                                        <input type="text" name="customerName" class="form-control" value="<%= customer.customerName %>">
+                                        <input type="text" name="customerName" class="form-control" 
+                                        value="<%= customer.customerName %>">
                                     <% } else { %>
                                         <h2 class="h5 text-primary"><%= customer.customerName %></h2>
                                     <% } %>
@@ -31,7 +34,8 @@
                                 <div class="col-md-6">
                                     <p class="mb-1 text-muted small">รหัสลูกค้า</p>
                                     <h2 class="h5"><%= customer.customerNumber %></h2>
-                                    <input type="hidden" name="customerNumber" value="<%= customer.customerNumber %>">
+                                    <input type="hidden" name="customerNumber" 
+                                    value="<%= customer.customerNumber %>">
                                 </div>
                             </div>
         
@@ -44,7 +48,8 @@
                                     <div class="mb-3">
                                         <label class="form-label fw-bold small">โทรศัพท์:</label>
                                         <% if (action === 'edit') { %>
-                                            <input type="text" name="phone" class="form-control" value="<%= customer.phone %>">
+                                            <input type="text" name="phone" class="form-control" 
+                                            value="<%= customer.phone %>">
                                         <% } else { %>
                                             <p class="form-control-plaintext"><%= customer.phone %></p>
                                         <% } %>
@@ -53,7 +58,8 @@
                                     <div class="mb-3">
                                         <label class="form-label fw-bold small">ที่อยู่บรรทัดที่ 1:</label>
                                         <% if (action === 'edit') { %>
-                                            <input type="text" name="addressLine1" class="form-control" value="<%= customer.addressLine1 %>">
+                                            <input type="text" name="addressLine1" class="form-control" 
+                                            value="<%= customer.addressLine1 %>">
                                         <% } else { %>
                                             <p class="form-control-plaintext"><%= customer.addressLine1 %></p>
                                         <% } %>
@@ -62,7 +68,8 @@
                                     <div class="mb-3">
                                         <label class="form-label fw-bold small">เมือง:</label>
                                         <% if (action === 'edit') { %>
-                                            <input type="text" name="city" class="form-control" value="<%= customer.city %>">
+                                            <input type="text" name="city" class="form-control" 
+                                            value="<%= customer.city %>">
                                         <% } else { %>
                                             <p class="form-control-plaintext"><%= customer.city %></p>
                                         <% } %>
@@ -71,7 +78,8 @@
                                     <div class="mb-3">
                                         <label class="form-label fw-bold small">ประเทศ:</label>
                                         <% if (action === 'edit') { %>
-                                            <input type="text" name="country" class="form-control" value="<%= customer.country %>">
+                                            <input type="text" name="country" class="form-control" 
+                                            value="<%= customer.country %>">
                                         <% } else { %>
                                             <p class="form-control-plaintext"><%= customer.country %></p>
                                         <% } %>
@@ -84,7 +92,8 @@
                                     <div class="mb-3">
                                         <label class="form-label fw-bold small">วงเงินเครดิต:</label>
                                         <% if (action === 'edit') { %>
-                                            <input type="number" name="creditLimit" class="form-control" value="<%= customer.creditLimit %>">
+                                            <input type="number" name="creditLimit" class="form-control" 
+                                            value="<%= customer.creditLimit %>">
                                         <% } else { %>
                                             <p class="form-control-plaintext"><%= customer.creditLimit %></p>
                                         <% } %>
