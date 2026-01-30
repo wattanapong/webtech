@@ -21,14 +21,14 @@
 <body>
 
     <div class="container main-container">
-        <div class="text-center text-primary h1 mb-4">Now <label id="clock"></label></div>
-        <div class="text-center text-primary h1 mb-4">Now <label id="clock2"></label></div>
+        <div class="text-center text-primary h1 mb-4">Clock <label id="clock"></label></div>
+        <div class="text-center text-success h1 mb-4">Clock2 <label id="clock2"></label></div>
+        <div class="text-center text-success h1 mb-4">display <label id="display"></label></div>
+
     </div>
 
     <script>
-        setInterval(clock, 1000)
-
-        function clock() {
+        const clock = () => {
             let d = new Date();
 
             h = d.getHours()
@@ -36,15 +36,19 @@
             s = d.getSeconds()
 
             document.getElementById("clock").innerHTML =
-                h + ":" +
-                m + ":" +
-                s;
+                h + ":" + m + ":" + s;
 
             document.getElementById("clock2").innerHTML =
-                String(h).padStart(2) + ":" +
+                String(h).padStart(2, 0) + ":" +
                 String(m).padStart(2,'0') + ":" +
                 String(s).padStart(2,'0');
         }
+
+        //setInterval(clock, 3000)
+        setTimeout(clock, 3000)
+        
+        document.getElementById('display').innerHTML = "Hello"
+
     </script>
 </body>
 

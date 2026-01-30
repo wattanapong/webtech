@@ -24,11 +24,11 @@ app.get("/", (req, res) => {
 
 app.get("/promise", (req, res) => {
   const promise = new Promise(function (resolve, reject) {
-    let flag = true;
+    let flag = false;
     if (flag) {
-      resolve("OK");
+      resolve("Resolved");
     } else {
-      reject("Error");
+      reject("Rejected");
     }
   });
 
@@ -40,13 +40,14 @@ app.get("/promise", (req, res) => {
     }
   ).catch(
     error => {
-    msg += `Catch ${error}`;
+    msg += `Catch ${error}<br>`;
   }).finally(
     () => {
       msg += `Finally`;
       res.end(`<h1>${msg}</h1>`);
     }
   );  
+
 });
 
 app.get('/promise_ex1', (req, res) =>{
