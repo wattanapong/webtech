@@ -1,0 +1,73 @@
+
+.main-layout{
+    top: 5%;
+    font-size: 1.2em;
+}
+
+.title, .message {
+    display: block;
+}
+
+.title{
+    top: 5%;
+    font-size: 2em;
+}
+
+
+@media (max-width:500px) {
+    .title{
+    font-size: 1.8em;
+    }
+}
+
+@media (max-width:450px) {
+    .title{
+    font-size: 1.6em;
+    }
+}
+
+@media (max-width:400px) {
+    .title{
+    font-size: 1.4em;
+    }
+}
+
+@media (max-width:350px) {
+    .title{
+    font-size: 1.2em;
+    }
+}
+
+@media (max-width:300px) {
+    .title{
+    font-size: 1em;
+    }
+}
+
+.message {
+    margin-top: 20px;
+}
+
+#stick1, #stick2, #stick3{
+    width: 180px;
+    height: 180px;
+    padding: 10px;
+    margin: 50px 10px 10px 10px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+#stick1{
+    background-color: rgb(168, 110, 223);
+    box-shadow: 5px 10px 0px rgb(103, 103, 151);
+}
+
+#stick2{
+    background-color: rgb(43, 226, 165);
+    box-shadow: 5px 10px 10px rgb(12, 173, 120);
+}
+
+#stick3{
+    background-color: rgb(192, 226, 43);
+    box-shadow: 5px 10px 15px rgb(134, 161, 11);
+}

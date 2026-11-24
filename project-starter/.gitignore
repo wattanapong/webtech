@@ -1,7 +1,0 @@
-node_modules/
-.env
-.env.*
-!.env.example
-public/css/style.css
-npm-debug.log*
-.DS_Store

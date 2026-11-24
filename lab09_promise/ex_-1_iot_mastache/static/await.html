@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Asynchronous</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .main-container {
+            max-width: 400px;
+            margin: auto;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container main-container">
+        <div class="text-center text-primary h1 mb-4">Demo: <label id="demo"></label></div>
+        <div class="text-center text-primary h1 mb-4">Run: <label id="run"></label></div>
+    </div>
+
+    <script>
+        async function myDisplay() {
+            const response = await fetch("/time");
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            document.getElementById("demo").innerHTML = await response.text();
+        }
+
+        setInterval(()=>{
+            myDisplay();
+        }, 1000)
+
+        document.getElementById("run").innerHTML = "<h2 class='text-success mb-4'>Running...</h2>";
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Order Number</th>
+                <th scope="col">Product Code</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Line</th>
+                <th scope="col">Product Scale</th>
+                <th scope="col">Product Vendor</th>
+                <th scope="col">Product Description</th>
+                <th scope="col">Quantity Ordered</th>
+                <th scope="col">Price Each</th>
+                <th scope="col">Order Line Number</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <% orderdetails.forEach(orderdetail => { %>
+                <tr>
+                    <td><%= orderdetail.orderNumber %></td>
+                    <td><%= orderdetail.productCode %></td>
+                    <td><%= orderdetail.productName %></td>
+                    <td><%= orderdetail.productLine %></td>
+                    <td><%= orderdetail.productScale %></td>
+                    <td><%= orderdetail.productVendor %></td>
+                    <td><%= orderdetail.productDescription %></td>
+                    <td><%= orderdetail.quantityOrdered %></td>
+                    <td><%= orderdetail.priceEach %></td>
+                    <td><%= orderdetail.orderLineNumber %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

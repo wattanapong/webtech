@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        li{
+            background-color: #DEF;
+        }
+        li:hover{
+            background-color: #0F0;
+            text-color: #BCD;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row mt-5 text-center">
+            <div class="col-2">
+                <ul style="list-style-type: none;">
+                    <li onclick="render('main')">Home</li>
+                    <li onclick="render('memberconsole')">Member</li>
+                    <li><a href="/product">Product</a></li>
+                    <li onclick="render('contact')">Contact us</li>
+                    <li onclick="render('about')">About us</li>
+                </ul>
+            </div>
+            <div class="col-10">
+                <div class="row content">
+                    <h1>Product</h1>
+                    <div class="row">
+                        {{#product}}
+                        <div class="col-6">
+                        <h2>{{name}}</h2>
+                        <img src="{{img}}" width="200px">
+                        </div>
+                        {{/product}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
