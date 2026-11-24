@@ -5,3 +5,5 @@ test
 tmp
 hosting_nodejs
 **/node_modules
+# lecture slides – kept on the lecturer's computer only, never pushed
+slides/
