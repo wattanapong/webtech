@@ -1,0 +1,38 @@
+### CH5-3 · VS Code REST Client – click "Send Request" above each ###
+@base = http://localhost:3000/api
+
+### List products
+GET {{base}}/products?q=pen
+
+### One product (200) and a missing one (404)
+GET {{base}}/products/1
+
+###
+GET {{base}}/products/9999
+
+### Create a product (201)
+POST {{base}}/products
+Content-Type: application/json
+
+{ "name": "Notebook", "price": 45, "stock": 30, "categoryId": 1 }
+
+### Validation error (400)
+POST {{base}}/products
+Content-Type: application/json
+
+{ "name": "Bad", "price": "free" }
+
+### Replace with PUT (send all fields)
+PUT {{base}}/products/1
+Content-Type: application/json
+
+{ "name": "Blue Pen", "price": 18, "stock": 90, "categoryId": 1 }
+
+### Update stock only with PATCH
+PATCH {{base}}/products/1
+Content-Type: application/json
+
+{ "stock": 5 }
+
+### Delete (204), run twice → 404
+DELETE {{base}}/products/2

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>classicmodels</title></head>
+<body>
+  <h1>classicmodels customers API</h1>
+  <ul>
+    <li><a href="/api/customers">GET /api/customers</a></li>
+    <li><a href="/api/customers/103">GET /api/customers/103</a></li>
+    <li><a href="/demo/unsafe?city=Paris">SQL injection demo – normal input</a></li>
+    <li><a href="/demo/unsafe?city=%27%20OR%20%271%27%3D%271">SQL injection demo – attack (' OR '1'='1)</a></li>
+    <li><a href="/demo/safe?city=%27%20OR%20%271%27%3D%271">Same attack against the safe route</a></li>
+  </ul>
+  <p>PUT and DELETE: use <code>customers.http</code> in VS Code.</p>
+</body>
+</html>
