@@ -26,3 +26,9 @@ when package.json contains
 }
 
 ```
+
+- Alternative web server (server.js, read query string `?name=...`)
+```
+npm run server
+```
+then browse http://127.0.0.1:3000/?name=webtech

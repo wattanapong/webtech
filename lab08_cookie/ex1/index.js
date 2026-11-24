@@ -28,9 +28,10 @@ app.use('/register', (req, res) => {
 
 app.get(['/','/login'],(req,res)=>{
   let {msg} = req.query
+  let query = ''
   if (msg)
-    msg = 'msg='+msg
-  res.redirect('/member/login?'+msg)
+    query = '?msg=' + encodeURIComponent(msg)
+  res.redirect('/member/login' + query)
 })
 
 // Start the Express server

@@ -77,10 +77,10 @@ router.get('/member', (req, res) => {
 
 router.get('/logout', (req, res) => {
     const username = req.cookies.username;
-    if (username)
+    if (username){
         res.clearCookie('token')
         res.clearCookie('username')
-    
+    }
     res.redirect('/member/login')
 });
 

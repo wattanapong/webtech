@@ -3,25 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>List</title>
 </head>
 <body>
-    <dl> การใช้ dl
-        <dt> 1
-            <dd>หัวข้อที่ 1</dd>
-            <dd>หัวข้อที่ 2</dd>
-        </dt>
-        <dt> 2
-            <dd>หัวข้อที่ 1</dd>
-            <dd>หัวข้อที่ 2</dd>
-        </dt>
-    </dl>
+    <!-- UL: type = disc, circle, square -->
+    <p>การสร้างรายการหรือเมนู</p>
+    <ul type="square">
+        <li>การใช้ ul</li>
+        <li>การใช้ ol</li>
+        <li>การใช้ dl</li>
+    </ul>
+
+    <p>การสร้างรายการหรือเมนู</p>
+    <ul type="circle">
+        <li>การใช้ ul</li>
+        <li>การใช้ ol</li>
+        <li>การใช้ dl</li>
+    </ul>
 
     <hr>
-    <ol type="A" start="3">
-        <li>หัวข้อที่ 1</li>
-        <li>หัวข้อที่ 2</li>
+    <!-- OL: type = a, A, 1, i, I -->
+    <p>การสร้างรายการหรือเมนูด้วยคำสั่ง ol</p>
+    <ol>
+        <li>การใช้ ul</li>
+        <li>การใช้ ol</li>
+        <li>การใช้ dl</li>
     </ol>
-    
+
+    <p>การสร้างรายการหรือเมนูด้วยคำสั่ง ol</p>
+    <ol type="I">
+        <li>การใช้ ul</li>
+        <li>การใช้ ol</li>
+        <li>การใช้ dl</li>
+    </ol>
+
+    <p>การสร้างรายการหรือเมนูด้วยคำสั่ง ol</p>
+    <ol type="a">
+        <li>การใช้ ul</li>
+        <li>การใช้ ol</li>
+        <li>การใช้ dl</li>
+    </ol>
+
+    <p>การสร้างรายการหรือเมนูด้วยคำสั่ง ol</p>
+    <ol type="A" start="3">
+        <li>การใช้ ul</li>
+        <li>การใช้ ol</li>
+        <li>การใช้ dl</li>
+    </ol>
+
+    <hr>
+    <!-- DL: dl > dt (term) + dd (description); dd is a sibling of dt, not inside it -->
+    <p>การใช้ dl</p>
+    <dl>
+        <dt>1</dt>
+        <dd>หัวข้อที่ 1</dd>
+        <dd>หัวข้อที่ 2</dd>
+        <dt>2</dt>
+        <dd>หัวข้อที่ 1</dd>
+        <dd>หัวข้อที่ 2</dd>
+    </dl>
 </body>
 </html>

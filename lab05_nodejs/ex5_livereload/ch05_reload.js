@@ -1,12 +1,16 @@
 const express = require('express');
 const livereload = require('livereload');
 const livereloadMiddleware = require('connect-livereload');
+const path = require('path');
 
 const app = express();
 
+// lab01_html is at the repository root (two levels up from this folder)
+const htmlDir = path.join(__dirname, '../../lab01_html');
+
 // Create a Livereload server
 const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(__dirname+ '/lab01_html');
+liveReloadServer.watch(htmlDir);
 
 // Add the Livereload middleware
 app.use(livereloadMiddleware({
@@ -14,7 +18,7 @@ app.use(livereloadMiddleware({
 }));
 
 // Serve static files (e.g., HTML, CSS, JavaScript)
-app.use(express.static(__dirname+ '/lab01_html'));
+app.use(express.static(htmlDir));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

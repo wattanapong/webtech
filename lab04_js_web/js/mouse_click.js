@@ -8,13 +8,11 @@ btn.forEach((button, index) => {
     button.addEventListener('mouseenter',()=>{
         button.disabled = true
     })
-    
+
     button.addEventListener("mouseleave",()=>{
         button.disabled = false
     })
 });
-
-addEventListener('click',()=>{})
 
 
 // const btn1 = document.getElementById("btn1")
@@ -35,4 +33,3 @@ addEventListener('click',()=>{})
 // btn2.addEventListener("mouseleave",()=>{
 //     btn2.disabled = false
 // })
-

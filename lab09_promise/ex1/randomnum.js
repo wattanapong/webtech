@@ -1,8 +1,6 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path')
 const mustacheExpress = require('mustache-express');
-const { error } = require('console');
 
 const app = express();
 const port = 3000;

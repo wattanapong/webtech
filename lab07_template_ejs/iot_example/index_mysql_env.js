@@ -23,6 +23,7 @@ const locationRoutes = require('./router/location');
 
 // Use routes
 app.use('/location', locationRoutes);
+app.use('/manufacture', require('./router/manufacture'));
 
 // Start the Express server
 app.listen(port, () => {

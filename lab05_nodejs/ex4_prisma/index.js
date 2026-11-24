@@ -1,17 +1,15 @@
 const express = require('express');
 const { PrismaClient, Prisma } = require('@prisma/client');
-const bodyParser = require('body-parser');
 
 const app = express();
 const prisma = new PrismaClient();
 const path = require('path');
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-// var urlencodedParser = bodyParser.urlencoded({ extended: false })
+app.use(express.urlencoded({ extended: false }))
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(express.json())
 
 app.use('/css', express.static(path.resolve(__dirname, 'static/css')))
 
@@ -25,14 +23,18 @@ app.get('/', (req, res) => {
 });
 
 app.get('/locations', async (req, res) => {
-  const locations = await prisma.location.findMany({
-    // where: { published: true },
-    // include: { author: true },
-    orderBy: {
-      location_id: 'desc'
-    }
-  })
-  res.json(locations)
+  try {
+    const locations = await prisma.location.findMany({
+      // where: { published: true },
+      // include: { author: true },
+      orderBy: {
+        location_id: 'desc'
+      }
+    })
+    res.json(locations)
+  } catch (e) {
+    res.status(500).json({'error': e.message})
+  }
 })
 
 app.post('/location', async (req, res) => {
@@ -45,18 +47,23 @@ app.post('/location', async (req, res) => {
     })
     res.json(data)
   } catch (e) {
-    return res.json({'error': e.message})
+    return res.status(500).json({'error': e.message})
   }
 })
 
 app.get('/location/:id', async (req, res) => {
   const { id } = req.params
-  const location = await prisma.location.findUnique({
-    where: { "location_id": parseInt(id) },
-    // data: { published: true },
-  })
-  console.log('location')
-  res.json(location)
+  try {
+    const location = await prisma.location.findUnique({
+      where: { "location_id": parseInt(id) },
+    })
+    if (!location) {
+      return res.status(404).json({'error': 'Location not found'})
+    }
+    res.json(location)
+  } catch (e) {
+    res.status(500).json({'error': e.message})
+  }
 })
 
 // app.delete('/user/:id', async (req, res) => {
@@ -75,4 +82,6 @@ process.on('SIGTERM', () => {
 });
 
 
-const server = app.listen(3000)
+const server = app.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000')
+})

@@ -1,11 +1,11 @@
 {
   "scripts": {
-    "index": "nodemon -e * index.js"
+    "start": "node index.js",
+    "index": "nodemon -e js,mustache,html index.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.1",
-    "env": "^0.0.2",
     "express": "^4.18.2",
     "md5": "^2.3.0",
     "mustache": "^4.2.0",

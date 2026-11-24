@@ -9,11 +9,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/json', (req, res) => {
-    const page = Number(req.query.page) || 0;
+    const page = Number(req.query.page) || 1;   // page starts at 1
     const limit = Number(req.query.limit) || 10;
     pool.query('SELECT * FROM customers Limit ?,?', 
-    [page*limit, limit], (err, rows, fields) => {
-        if (err) throw err;
+    [(page - 1) * limit, limit], (err, rows, fields) => {
+        if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
     })
 });
@@ -21,7 +21,8 @@ router.get('/json', (req, res) => {
 router.get('/edit/:customerNumber', (req, res) => {
     pool.query('SELECT * FROM customers WHERE customerNumber = ?', 
     [req.params.customerNumber], (err, rows, fields) => {
-        if (err) throw err;
+        if (err) return res.status(500).send(err.message);
+        if (rows.length == 0) return res.status(404).send('Customer not found');
         // res.json(rows);
         res.render('customer', {customer: rows[0], action: 'edit'});
     })
@@ -53,10 +54,11 @@ router.post('/update', (req, res) => {
 router.get('/:customerNumber', (req, res) => {
     pool.query('SELECT * FROM customers WHERE customerNumber = ?', 
     [req.params.customerNumber], (err, rows, fields) => {
-        if (err) throw err;
+        if (err) return res.status(500).send(err.message);
+        if (rows.length == 0) return res.status(404).send('Customer not found');
         // res.json(rows);
         res.render('customer', {customer: rows[0], action: 'view'});
     })
 });
 
-module.exports = router
+module.exports = router;

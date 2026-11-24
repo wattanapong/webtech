@@ -35,5 +35,9 @@ router.get('/member', (req, res) => {
     res.render('member/member')
 });
 
+router.get('/logout', (req, res) => {
+    res.redirect('/member/login')
+});
+
 
 module.exports = router;

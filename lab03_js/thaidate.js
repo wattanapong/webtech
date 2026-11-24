@@ -8,7 +8,7 @@ let thaiDate = {
     day() { return this.currentDate.getDate()},
 
     short(){
-        txt = `${this.day()}/${this.month()}/${this.year()}`
+        let txt = `${this.day()}/${this.month()}/${this.year()}`
         return txt
     },
 

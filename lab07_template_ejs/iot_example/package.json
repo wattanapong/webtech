@@ -9,6 +9,6 @@
   },
   "scripts": {
     "start": "nodemon index_simple.js",
-    "debug": "nodemon -e static,.js,.ejs index_mysql_env.js"
+    "debug": "nodemon -e js,ejs,css index_mysql_env.js"
   }
 }

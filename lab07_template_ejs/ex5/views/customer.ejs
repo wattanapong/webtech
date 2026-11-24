@@ -77,6 +77,21 @@
                                 
                                 <div class="mb-2">
                                     <label class="form-label fw-bold small">วงเงินเครดิต:</label>
-                                    <p class="form-control-plaintext
+                                    <p class="form-control-plaintext"><%= customer.creditLimit %></p>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label class="form-label fw-bold small">รหัสพนักงานขาย:</label>
+                                    <p class="form-control-plaintext"><%= customer.salesRepEmployeeNumber %></p>
+                                </div>
+
+                                <a class="btn btn-primary" href="/order/<%= customer.customerNumber %>">ดูคำสั่งซื้อ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

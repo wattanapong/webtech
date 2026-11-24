@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/sticky.css">
-    <!-- <script src="js/prompt.js"></script> -->
 </head>
 
 <body>
@@ -103,17 +102,17 @@
                             <div class="mb-1 form-check form-check-inline ">
                                 <input type="checkbox" class="form-check-input" id="hardware" name="major"
                                     value="hardware">
-                                <label class="form-check-label" for="software">ฮาร์ดแวร์</label>
+                                <label class="form-check-label" for="hardware">ฮาร์ดแวร์</label>
                             </div>
                             <div class="mb-1 form-check form-check-inline ">
                                 <input type="checkbox" class="form-check-input" id="network" name="major"
                                     value="network">
-                                <label class="form-check-label" for="software">เน็ตเวิร์ค</label>
+                                <label class="form-check-label" for="network">เน็ตเวิร์ค</label>
                             </div>
 
                             <!-- Select Dropdown -->
                             <div class="mb-1">
-                                <label for="select" class="form-label">สายงานที่จะทำหลังเรียนจบ</label>
+                                <label for="job" class="form-label">สายงานที่จะทำหลังเรียนจบ</label>
                                 <select class="form-select" id="job" name="job" required>
                                     <option value="Programmer">Programmer</option>
                                     <option value="industry">โรงงาน</option>
@@ -136,7 +135,7 @@
             </div>
         </div>
     </div>
-    <!-- <script src="js/prompt.js"></script> -->
+    <script src="js/prompt.js"></script>
     <script>
         element = document.querySelectorAll("h1.intro");
         element[0].innerHTML = element[0].innerHTML.toUpperCase()

@@ -8,6 +8,9 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const cookie = require('cookie-parser')
 
+
+
+
 router.use(cookie());
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -94,6 +97,11 @@ router.post('/verify-api', (req,res) => {
     const {username, password} = req.body
     const sql = "SELECT * FROM user WHERE username = ?"
 
+    if (!username || !password){
+        res.json({'msg':'failed'})
+        return
+    }
+
     pool.query(sql, username, (err, results) =>{
         if (err){
             console.log(err)
@@ -133,9 +141,28 @@ router.post('/verify', (req,res) => {
                 const token = jwt.sign({username: username}, process.env.secret)
                 res.cookie('username', username, {maxAge: 24*60*60*1000, httpOnly: true})
                 res.cookie('token', token, {maxAge: 24*60*60*1000, httpOnly: true})
-                res.render('member/member', {username:username})
+                res.redirect('/member/member')
             }
 
+        }
+    })
+})
+
+router.get('/api/user-cookie', (req, res) => {
+    const username = req.cookies.username;
+    if (username)
+        res.json({'username': username})
+    else
+        res.json({'username': ''})
+})
+
+router.get('/api/user', (req, res) => {
+    pool.query("SELECT username, privilege_id FROM user", (err, results) => {
+        if (err){
+            console.log(err)
+            res.json({'msg':'failed'})
+        }else{
+            res.json({'msg':'success', 'data':results})
         }
     })
 })
@@ -150,10 +177,10 @@ router.get('/member', (req, res) => {
 
 router.get('/logout', (req, res) => {
     const username = req.cookies.username;
-    if (username)
+    if (username){
         res.clearCookie('token')
         res.clearCookie('username')
-    
+    }
     res.redirect('/member/login')
 });
 

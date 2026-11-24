@@ -1,7 +1,5 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const path = require("path");
-const { error } = require("console");
 
 const app = express();
 const port = 3000;
@@ -11,8 +9,8 @@ app.set("view engine", "ejs");
 
 require("dotenv").config();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 let root_path = path.resolve(__dirname, "static");
 
@@ -24,11 +22,11 @@ app.get("/", (req, res) => {
 
 app.get("/promise", (req, res) => {
   const promise = new Promise(function (resolve, reject) {
-    let flag = false;
+    let flag = true;
     if (flag) {
-      resolve("Resolved");
+      resolve("OK");
     } else {
-      reject("Rejected");
+      reject("Error");
     }
   });
 

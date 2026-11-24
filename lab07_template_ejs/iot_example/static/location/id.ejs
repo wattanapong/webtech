@@ -2,8 +2,8 @@
 <a class="btn btn-info" href="/location/">List Location</a> | 
 <a class="btn btn-warning" href="/location/add">Add Location</a>  <br>
 
-<label for="location_name">Location Id: <%-location_id%></label> <br>
-<label for="location_name">Location Name: <%-location_name%></label> 
+<label for="location_name">Location Id: <%= location_id %></label> <br>
+<label for="location_name">Location Name: <%= location_name %></label> 
 <a href="/location/update/<%= location_id %>" class="btn btn-warning">Update This Location</a> | 
 <form action="/location/delete" method="POST" style="display: inline">
   <input

@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql2');
-const bodyParser = require('body-parser');
 const path = require('path')
 
 
@@ -19,8 +18,8 @@ const pool = mysql.createPool({
 
 let root_path = path.resolve(__dirname, '../', 'static', 'location')
 
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use(bodyParser.json());
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
 
 // Define user routes
 router.get('/', (req, res) => {
@@ -41,12 +40,12 @@ router.get('/list', (req, res) => {
 
 router.get('/json/:id', (req, res) => {
 
-    var sql = 'SELECT * FROM location WHERE location_id = ' + req.params['id']
-    pool.query(sql, (error, results, fields) => {
+    var sql = 'SELECT * FROM location WHERE location_id = ?'
+    pool.query(sql, [req.params['id']], (error, results, fields) => {
         if (error) {
             console.error(error);
             res.status(500).send('Error retrieving data from the database\n' + sql);
-        } if (results.length == 0) {
+        } else if (results.length == 0) {
             res.status(404).send('no location_id = ' + req.params['id']);
         } else {
             res.json(results)
@@ -57,17 +56,17 @@ router.get('/json/:id', (req, res) => {
 
 router.get('/:id(\\d+)', (req, res) => {
 
-    var sql = 'SELECT * FROM location WHERE location_id = ' + req.params['id']
-    pool.query(sql, (error, results, fields) => {
+    var sql = 'SELECT * FROM location WHERE location_id = ?'
+    pool.query(sql, [req.params['id']], (error, results, fields) => {
         if (error) {
             console.error(error);
             res.status(500).send('Error retrieving data from the database\n' + sql);
-        } if (results.length == 0) {
+        } else if (results.length == 0) {
             res.status(404).send('no location_id = ' + req.params['id']);
         } else {
             // res.setHeader('Content-Type', 'text/html')
-            location_id = results[0].location_id
-            location_name = results[0].location_name
+            let location_id = results[0].location_id
+            let location_name = results[0].location_name
             res.render('location/index', { 'location_id': location_id, 'location_name': location_name })
         }
     });
@@ -75,17 +74,17 @@ router.get('/:id(\\d+)', (req, res) => {
 
 router.get('/update/:id', (req, res) => {
 
-    var sql = 'SELECT * FROM location WHERE location_id = ' + req.params['id']
-    pool.query(sql, (error, results, fields) => {
+    var sql = 'SELECT * FROM location WHERE location_id = ?'
+    pool.query(sql, [req.params['id']], (error, results, fields) => {
         if (error) {
             console.error(error);
             res.status(500).send('Error retrieving data from the database\n' + sql);
-        } if (results.length == 0) {
+        } else if (results.length == 0) {
             res.status(404).send('no location_id = ' + req.params['id']);
         } else {
             // res.setHeader('Content-Type', 'text/html')
-            location_id = results[0].location_id
-            location_name = results[0].location_name
+            let location_id = results[0].location_id
+            let location_name = results[0].location_name
             res.render('location/update', { 'location_id': location_id, 'location_name': location_name })
         }
     });

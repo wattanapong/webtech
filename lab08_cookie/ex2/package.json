@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node --watch index",
-    "dev": "nodemon -e static,.js,.mustache index ",
+    "dev": "nodemon -e js,ejs,css index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

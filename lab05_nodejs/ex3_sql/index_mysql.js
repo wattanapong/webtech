@@ -101,7 +101,7 @@ app.post('/customers/update', (req, res) => {
       return res.status(500).json({ error: err.message });
     }
 
-    res.json(results);
+    res.redirect('/customers/' + req.body.customerNumber);
   });
 });
 

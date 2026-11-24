@@ -72,7 +72,7 @@
 
 <script>
     let state = {
-        page: 0,
+        page: 1,
         limit: 10
     };
 
@@ -136,7 +136,7 @@
     });
 
     document.getElementById('limitSelector').addEventListener('change', (e) => {
-        state.limit = e.target.value;
+        state.limit = Number(e.target.value);
         state.page = 1;
         fetchData();
     });

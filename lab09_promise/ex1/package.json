@@ -1,12 +1,11 @@
 {
-  "name": "lab08_cookie",
+  "name": "lab09_promise_ex1",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "node --watch index.js",
-    "promise": "nodemon -e static,.js,.mustache,.html index.js ",
-    "rand": "nodemon -e static,.js,.mustache randomnum.js",
-    "ajax": "nodemon -e static,.js,.mustache index_mysql_env.js",
+    "promise": "nodemon -e js,ejs,mustache,html index.js",
+    "rand": "nodemon -e js,mustache,html randomnum.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -15,7 +14,7 @@
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
-    "md5": "^2.3.0",
+    "mustache-express": "^1.3.2",
     "nodemon": "^3.0.2"
   },
   "description": ""

@@ -6,6 +6,8 @@ const port = 3000;
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
+
 app.use('/customers', require('./router/customers'));
 app.use('/order', require('./router/order'));
 app.use('/orderdetails', require('./router/orderdetails'));

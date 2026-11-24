@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql2');
-const bodyParser = require('body-parser');
 const path = require('path')
 
 
@@ -19,8 +18,8 @@ const pool = mysql.createPool({
 
 let root_path = path.resolve(__dirname, '../', 'static', 'iot_data')
 
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use(bodyParser.json());
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
 
 // Define user routes
 router.get('/', (req, res) => {
@@ -57,10 +56,10 @@ router.get('/table2/', (req, res)=>{
         if (error) {
             console.error(error);
             res.status(500).send('Error retrieving data from the database\n' + sql);
-        } if (results.length == 0) {
+        } else if (results.length == 0) {
             res.status(404).send('no iot_data_id = ' + req.params['id']);
         } else {
-            data = []
+            let data = []
             results.forEach( row =>{
                 data.push(row)
             })
@@ -73,12 +72,12 @@ router.get('/table2/', (req, res)=>{
 
 router.get('/json/:id', (req, res) => {
 
-    var sql = 'SELECT * FROM iot_data WHERE iot_data_id = ' + req.params['id']
-    pool.query(sql, (error, results, fields) => {
+    var sql = 'SELECT * FROM iot_data WHERE iot_data_id = ?'
+    pool.query(sql, [req.params['id']], (error, results, fields) => {
         if (error) {
             console.error(error);
             res.status(500).send('Error retrieving data from the database\n' + sql);
-        } if (results.length == 0) {
+        } else if (results.length == 0) {
             res.status(404).send('no iot_data_id = ' + req.params['id']);
         } else {
             res.json(results)
@@ -89,17 +88,17 @@ router.get('/json/:id', (req, res) => {
 
 router.get('/:id(\\d+)', (req, res) => {
 
-    var sql = 'SELECT * FROM iot_data WHERE iot_data_id = ' + req.params['id']
-    pool.query(sql, (error, results, fields) => {
+    var sql = 'SELECT * FROM iot_data WHERE iot_data_id = ?'
+    pool.query(sql, [req.params['id']], (error, results, fields) => {
         if (error) {
             console.error(error);
             res.status(500).send('Error retrieving data from the database\n' + sql);
-        } if (results.length == 0) {
+        } else if (results.length == 0) {
             res.status(404).send('no iot_data_id = ' + req.params['id']);
         } else {
             // res.setHeader('Content-Type', 'text/html')
-            iot_data_id = results[0].iot_data_id
-            iot_data_name = results[0].iot_data_name
+            let iot_data_id = results[0].iot_data_id
+            let iot_data_name = results[0].iot_data_name
             res.render('iot_data/index', { 'iot_data_id': iot_data_id, 'iot_data_name': iot_data_name })
         }
     });
@@ -107,17 +106,17 @@ router.get('/:id(\\d+)', (req, res) => {
 
 router.get('/update/:id', (req, res) => {
 
-    var sql = 'SELECT * FROM iot_data WHERE iot_data_id = ' + req.params['id']
-    pool.query(sql, (error, results, fields) => {
+    var sql = 'SELECT * FROM iot_data WHERE iot_data_id = ?'
+    pool.query(sql, [req.params['id']], (error, results, fields) => {
         if (error) {
             console.error(error);
             res.status(500).send('Error retrieving data from the database\n' + sql);
-        } if (results.length == 0) {
+        } else if (results.length == 0) {
             res.status(404).send('no iot_data_id = ' + req.params['id']);
         } else {
             // res.setHeader('Content-Type', 'text/html')
-            iot_data_id = results[0].iot_data_id
-            iot_data_name = results[0].iot_data_name
+            let iot_data_id = results[0].iot_data_id
+            let iot_data_name = results[0].iot_data_name
             res.render('iot_data/update', { 'iot_data_id': iot_data_id, 'iot_data_name': iot_data_name })
         }
     });

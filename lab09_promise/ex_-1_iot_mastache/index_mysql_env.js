@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path')
 const mustacheExpress = require('mustache-express')
 
@@ -12,8 +11,8 @@ app.engine('mustache', mustacheExpress());
 
 require('dotenv').config();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 let root_path = path.resolve(__dirname, 'static')
 

@@ -18,15 +18,15 @@ console.log(circle1.getArea(2))
 circle2.r = 2
 console.log(circle2.getArea())
 
-console.log(new circle("my circle").name)
-
-myCircle = new circle("my circle");
-console.log(myCircle.name)
-
+// A class must be declared before it is used (no hoisting for class)
 class circle {
     constructor(name) {
-    // Assign the RGB values as a property of `this`.
+    // Assign the name as a property of `this`.
     this.name = name;
     }
 }
 
+console.log(new circle("my circle").name)
+
+myCircle = new circle("my circle");
+console.log(myCircle.name)

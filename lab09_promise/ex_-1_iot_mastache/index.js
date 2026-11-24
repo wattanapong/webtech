@@ -1,9 +1,7 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path')
 const mustacheExpress = require('mustache-express');
-// const { error } = require('console');
-
+// 
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -13,8 +11,8 @@ app.engine('mustache', mustacheExpress());
 
 // require('dotenv').config();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 let root_path = path.resolve(__dirname, 'static')
 
@@ -48,17 +46,15 @@ app.get('/async', (req, res) => {
 
   promise.then(value => {
     console.log(value)
+    res.send(value)
   }, error => {
     console.log(' catch exception ' + error)
+    res.send('catch exception ' + error)
   }
   )
-
-  promise.catch(error => {
-    console.error(error)
-  })
 })
 
-calculator = (a, b, operator) => {
+const calculator = (a, b, operator) => {
 
   a = parseFloat(a)
   b = parseFloat(b)
@@ -78,12 +74,12 @@ calculator = (a, b, operator) => {
 app.get('/cal/:cal', (req, res) => {
 
   const operRegex = /[+\-*r]/;
-  cal = req.params['cal'].split(operRegex)
+  let cal = req.params['cal'].split(operRegex)
 
-  a = cal[0]
-  b = cal[1]
+  let a = cal[0]
+  let b = cal[1]
 
-  operator = req.params['cal'].replace(a, '').replace(b, '')
+  let operator = req.params['cal'].replace(a, '').replace(b, '')
   let msg = ''
   var txt = ''
 
@@ -92,7 +88,7 @@ app.get('/cal/:cal', (req, res) => {
       reject('divide by zero')
     }
     else {
-      c = calculator(a, b, operator)
+      let c = calculator(a, b, operator)
       operator = operator == 'r' ? '/' : operator
       msg = a + ' ' + operator + ' ' + b + ' = ' + c
       resolve(msg)
@@ -119,16 +115,15 @@ app.get('/cal/:cal', (req, res) => {
 app.get('/time', (req, res) => {
   let d = new Date();
 
-  h = d.getHours()
-  m = d.getMinutes()
-  s = d.getSeconds()
+  let h = d.getHours()
+  let m = d.getMinutes()
+  let s = d.getSeconds()
 
-  time = String(h).padStart(2) + ":" +
+  let time = String(h).padStart(2) + ":" +
   String(m).padStart(2,'0') + ":" +
   String(s).padStart(2,'0');
 
   res.send(time)
-  res.end()
 })
 
 // process.on('unhandledRejection', (reason, promise) => {

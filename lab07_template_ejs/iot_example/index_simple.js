@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path')
-const expressLayout = require('express-ejs-layouts');
+
 const app = express();
 const port = 3000;
 
@@ -11,16 +11,9 @@ let root_path = path.resolve(__dirname, 'static')
 
 app.use(express.static(root_path));
 
-app.use(expressLayout);
-app.set('layout', 'layout');
-
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('main')
 })
-
-// app.get('/', (req, res) => {
-//     res.render('main');
-// })
 
 // app.get('/student', (req, res) => {
 //     const student = {
@@ -35,4 +28,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-

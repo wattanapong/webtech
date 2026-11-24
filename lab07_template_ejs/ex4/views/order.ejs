@@ -26,7 +26,7 @@
                     <td><%= order.customerNumber %></td>
                     <td><%= new Date(order.orderDate).toLocaleDateString('TH-th') %></td>
                     <td><%= new Date(order.requiredDate).toLocaleDateString('TH-th') %></td>
-                    <td><%= new Date(order.shippedDate).toLocaleDateString('TH-th') %></td>
+                    <td><%= order.shippedDate ? new Date(order.shippedDate).toLocaleDateString('TH-th') : '-' %></td>
                     <td><%= order.status %></td>
                     <td><%= order.comments %></td>
                 </tr>

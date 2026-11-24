@@ -1,6 +1,5 @@
 const express = require('express');
 const mysql = require('mysql2');
-const bodyParser = require('body-parser');
 const path = require('path')
 
 const app = express();
@@ -17,8 +16,8 @@ const pool = mysql.createPool({
   port: 3306,
 });
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 let root_path = path.resolve(__dirname, 'static')
 
@@ -38,30 +37,30 @@ app.get('/locations', (req, res) => {
 
 app.get('/location/json/:id', (req, res) => {
 
-  var sql = 'SELECT * FROM location WHERE location_id = '+req.params['id']
-  pool.query(sql, (error, results, fields) => {
+  const sql = 'SELECT * FROM location WHERE location_id = ?'
+  pool.query(sql, [req.params['id']], (error, results, fields) => {
     if (error) {
       console.error(error);
       res.status(500).send('Error retrieving data from the database\n'+sql);
     } else {
       res.json(results)
-      res.end()
     }
   });
 });
 
 app.get('/location/:id', (req, res) => {
 
-  var sql = 'SELECT * FROM location WHERE location_id = '+req.params['id']
-  pool.query(sql, (error, results, fields) => {
+  const sql = 'SELECT * FROM location WHERE location_id = ?'
+  pool.query(sql, [req.params['id']], (error, results, fields) => {
     if (error) {
       console.error(error);
       res.status(500).send('Error retrieving data from the database\n'+sql);
+    } else if (results.length == 0) {
+      res.status(404).send('Location not found')
     } else {
+      // send only one response (send + sendFile together causes "headers already sent")
       res.setHeader('Content-Type', 'text/html')
       res.send(`Location ID: ${results[0].location_id}, Name: ${results[0].location_name}`)
-      res.sendFile(root_path + '/location/delete.html')
-      res.end()
     }
   });
 });
@@ -71,20 +70,32 @@ app.set('views', path.join(__dirname, 'static'));
 
 app.get('/location/update/:id', (req, res) => {
 
-  var sql = 'SELECT * FROM location WHERE location_id = '+req.params['id']
-  pool.query(sql, (error, results, fields) => {
+  const sql = 'SELECT * FROM location WHERE location_id = ?'
+  pool.query(sql, [req.params['id']], (error, results, fields) => {
     if (error) {
       console.error(error);
       res.status(500).send('Error retrieving data from the database\n'+sql);
+    } else if (results.length == 0) {
+      res.status(404).send('Location not found')
     } else {
-      // res.setHeader('Content-Type', 'text/html')
-      // res.send(`Location ID: ${results[0].location_id}, Name: ${results[0].location_name}`)
-      location_id = results[0].location_id
-      location_name = results[0].location_name
+      const location_id = results[0].location_id
+      const location_name = results[0].location_name
       res.render('update', {location_id, location_name})
-      // res.end()
-      
     }
+  });
+});
+
+// receive form from static/update.ejs
+app.post('/location/update', (req, res) => {
+  const { location_id, location_name } = req.body;
+
+  const sql = 'UPDATE location SET location_name = ? WHERE location_id = ?';
+
+  pool.query(sql, [location_name, location_id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.redirect('/location/json/' + location_id);
   });
 });
 

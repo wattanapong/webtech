@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Webpage</title>
+    <title>Sticky Note</title>
     <link rel="stylesheet" href="css/sticky.css">
+    <style>
+        .main-layout {
+            position: absolute;
+        }
+
+        .title {
+            position: fixed;
+        }
+
+        /* condition when screen < 500px */
+        @media (max-width:500px) {
+            .title {
+                position: relative;
+            }
+        }
+    </style>
 </head>
 <body>
     

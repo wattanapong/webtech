@@ -8,7 +8,7 @@ npm install express mysql2
 - install module PostgreSQL 
 
 ```
-npm install express pq
+npm install express pg
 ```
 
 ## keep secret data in .env

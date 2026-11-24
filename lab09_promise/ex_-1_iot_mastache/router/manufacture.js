@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql2');
-const bodyParser = require('body-parser');
 const path = require('path')
 
 
@@ -17,8 +16,8 @@ const pool = mysql.createPool({
   port: 3306,
 });
 
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use(bodyParser.json());
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
 
 // Define user routes
 router.get('/', (req, res) => {
@@ -27,7 +26,7 @@ router.get('/', (req, res) => {
 
 // Simple SELECT query
 router.get('/list', (req, res) => {
-  pool.query('SELECT * FROM location', (error, results, fields) => {
+  pool.query('SELECT * FROM manufacture', (error, results, fields) => {
     if (error) {
       console.error(error);
       res.status(500).send('Error retrieving data from the database');
@@ -39,16 +38,16 @@ router.get('/list', (req, res) => {
 
 router.get('/:id', (req, res) => {
 
-  var sql = 'SELECT * FROM manufacture WHERE id = ' + req.params['id']
-  pool.query(sql, (error, results, fields) => {
+  var sql = 'SELECT * FROM manufacture WHERE id = ?'
+  pool.query(sql, [req.params['id']], (error, results, fields) => {
     if (error) {
       console.error(error);
       res.status(500).send('Error retrieving data from the database\n' + sql);
+    } else if (results.length == 0) {
+      res.status(404).send('no manufacture id = ' + req.params['id']);
     } else {
       res.setHeader('Content-Type', 'text/html')
       res.send(`Manufacture ID: ${results[0].id}, Name: ${results[0].name}`)
-      res.sendFile(root_path + '/delete.html')
-      res.end()
     }
   });
 });

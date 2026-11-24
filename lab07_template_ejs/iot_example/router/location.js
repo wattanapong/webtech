@@ -1,4 +1,4 @@
-// userRoutes.js
+// location routes
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
@@ -27,32 +27,31 @@ router.get('/', (req, res) => {
 
 router.get('/json/:id', (req, res) => {
 
-    var sql = 'SELECT * FROM location WHERE location_id = ' + req.params['id']
-    db.query(sql, (error, results, fields) => {
+    const sql = 'SELECT * FROM location WHERE location_id = ?'
+    db.query(sql, [req.params['id']], (error, results, fields) => {
         if (error) {
             console.error(error);
-            res.status(500).send('Error retrieving data from the database\n' + sql);
-        } if (results.length == 0) {
+            res.status(500).send('Error retrieving data from the database');
+        } else if (results.length == 0) {
             res.status(404).send('no location_id = ' + req.params['id']);
         } else {
             res.json(results)
-            res.end()
         }
     });
 });
 
 router.get('/:id(\\d+)', (req, res) => {
 
-    var sql = 'SELECT * FROM location WHERE location_id = ' + req.params['id']
-    db.query(sql, (error, results, fields) => {
+    const sql = 'SELECT * FROM location WHERE location_id = ?'
+    db.query(sql, [req.params['id']], (error, results, fields) => {
         if (error) {
             console.error(error);
-            res.status(500).send('Error retrieving data from the database\n' + sql);
-        } if (results.length == 0) {
+            res.status(500).send('Error retrieving data from the database');
+        } else if (results.length == 0) {
             res.status(404).send('no location_id = ' + req.params['id']);
         } else {
-            location_id = results[0].location_id
-            location_name = results[0].location_name
+            const location_id = results[0].location_id
+            const location_name = results[0].location_name
             res.render('location/id', { 'location_id': location_id, 'location_name': location_name })
         }
     });
@@ -60,16 +59,16 @@ router.get('/:id(\\d+)', (req, res) => {
 
 router.get('/update/:id', (req, res) => {
 
-    var sql = 'SELECT * FROM location WHERE location_id = ' + req.params['id']
-    db.query(sql, (error, results, fields) => {
+    const sql = 'SELECT * FROM location WHERE location_id = ?'
+    db.query(sql, [req.params['id']], (error, results, fields) => {
         if (error) {
             console.error(error);
-            res.status(500).send('Error retrieving data from the database\n' + sql);
-        } if (results.length == 0) {
+            res.status(500).send('Error retrieving data from the database');
+        } else if (results.length == 0) {
             res.status(404).send('no location_id = ' + req.params['id']);
         } else {
-            location_id = results[0].location_id
-            location_name = results[0].location_name
+            const location_id = results[0].location_id
+            const location_name = results[0].location_name
             res.render('location/update', { 'location_id': location_id, 'location_name': location_name })
         }
     });
@@ -80,13 +79,13 @@ router.post('/update', (req, res) => {
 
     const { location_id, location_name } = req.body;
 
-    const sql = 'UPDATE location SET location_name = ? WHERE location_id=?';
+    const sql = 'UPDATE location SET location_name = ? WHERE location_id = ?';
 
     db.query(sql, [location_name, location_id], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect(location_id)
+        res.redirect('/location/' + location_id)
     });
 });
 
@@ -115,8 +114,8 @@ router.post('/delete', (req, res) => {
 
     const { location_id } = req.body;
 
-    // SQL query to insert data into the location table
-    const sql = 'DELETE FROM location WHERE location_id=(?)';
+    // SQL query to delete data from the location table
+    const sql = 'DELETE FROM location WHERE location_id = ?';
 
     // Execute the query with the provided data
     db.query(sql, [location_id], (err, result) => {
@@ -124,11 +123,9 @@ router.post('/delete', (req, res) => {
             return res.status(500).json({ error: err.message });
         }
 
-        // Return the ID of the inserted row
         console.log({ 'delete': 'completed' });
         res.redirect('/location')
     });
 });
 
 module.exports = router;
-

@@ -27,7 +27,6 @@ app.get('/test', (req, res) =>{
 
 app.get('*', function(req, res){
   // res.status(404).send('Please mercy us, don\'t attack.');
-  html = '<center><img src="/img/404.jpg" height="100%"></center>'
-  res.status(404).send(html);
+  res.status(404).send('<center><img src="/img/404.jpg" height="100%"></center>');
 })
 

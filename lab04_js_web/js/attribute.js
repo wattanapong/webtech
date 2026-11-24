@@ -5,41 +5,39 @@ const imageUrls = [
     'img/img31.jpg'
 ];
 
-let addclick = document.getElementsByClassName('addclick')[0]
-addclick.addEventListener('click', () => showthumbnail())
-
 showthumbnail = () => {
     let thumbnail = document.getElementsByClassName('thumbnail')[0]
     imageUrls.forEach((url, index) => {
-    const thumbnailElement = document.createElement('div');
-    thumbnailElement.classList.add('thumbnail');
-    const thumbnailImg = document.createElement('img');
-    thumbnailImg.src = url;
-    thumbnailElement.appendChild(thumbnailImg)
-    thumbnail.appendChild(thumbnailElement)
+        const thumbnailElement = document.createElement('div');
+        thumbnailElement.classList.add('thumbnail');
+        const thumbnailImg = document.createElement('img');
+        thumbnailImg.src = url;
+        thumbnailElement.appendChild(thumbnailImg)
+        thumbnail.appendChild(thumbnailElement)
     })
 }
 
+let addclick = document.getElementsByClassName('addclick')[0]
+addclick.addEventListener('click', () => showthumbnail())
+
 show = (url) => {
-    // let gallery = document.getElementsByClassName('gallery')[0]
-    const galleryImg = document.querySelector('.gallery img')
-    if (!galleryImg){
-        const galleryImg = document.createElement('img');
+    let galleryImg = document.querySelector('.gallery img')
+    if (!galleryImg) {
+        // Create image tag
+        galleryImg = document.createElement('img');
     }
+    // Add image source
     galleryImg.src = url;
 
+    // Add image tag to element
     let gallery = document.getElementsByClassName('gallery')[0]
-    gallery.appendChild(galleryImg)    
-
+    gallery.appendChild(galleryImg)
 }
 
+// Accessing content of element
 let gallery = document.getElementsByClassName('gallery')[0]
 let result = document.getElementsByClassName('result')[0]
 
+result.innerText = gallery.innerHTML
 
-// var text  = gallery.textContent || gallery.innerText;
-
-result.innerHTML = gallery.innerHTML
-
-// result.innerHTML = gallery.innerText
-
+// result.innerText = gallery.innerText

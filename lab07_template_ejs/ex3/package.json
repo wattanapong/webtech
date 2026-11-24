@@ -9,6 +9,6 @@
   },
   "scripts": {
     "start": "nodemon index.js",
-    "debug": "nodemon -e static,.js,.ejs index.js"
+    "debug": "nodemon -e js,ejs,css index.js"
   }
 }

@@ -22,15 +22,16 @@ const memberRoutes = require('./router/member');
 // Use routes
 app.use('/member', memberRoutes);
 
-app.use('/register', (req, res) => {
-  res.render('member/register')
+app.get('/register', (req, res) => {
+  res.redirect('/member/register')
 })
 
 app.get(['/','/login'],(req,res)=>{
   let {msg} = req.query
+  let query = ''
   if (msg)
-    msg = 'msg='+msg
-  res.redirect('/member/login?'+msg)
+    query = '?msg=' + encodeURIComponent(msg)
+  res.redirect('/member/login' + query)
 })
 
 // Start the Express server
