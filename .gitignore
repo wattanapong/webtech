@@ -20,3 +20,6 @@ Thumbs.db
 x.wattanapong.com
 hosting_nodejs
 tmp/
+
+# lecture slides – kept local only, never pushed
+slides/
