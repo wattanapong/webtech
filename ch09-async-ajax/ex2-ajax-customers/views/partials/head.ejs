@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= locals.title ?? 'AJAX' %></title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @custom-variant dark (&:where(.dark, .dark *));
+  </style>
+  <script>
+    // Lab 11 B: read the saved theme in <head> → no flash of the wrong theme
+    try {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
+    } catch {}
+  </script>
+</head>
+<body class="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+  <nav class="flex items-center gap-4 bg-blue-700 p-4 text-white">
+    <a href="/customers" class="font-bold">classicmodels</a>
+    <a href="/storage.html">Web Storage demo</a>
+    <a href="/xhr.html">XHR vs fetch</a>
+    <button id="themeBtn" class="ml-auto rounded border px-3 py-1">Dark mode</button>
+  </nav>

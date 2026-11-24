@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Storage</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="mx-auto max-w-2xl space-y-6 p-6">
+  <h1 class="text-2xl font-bold">localStorage vs sessionStorage</h1>
+  <p>Click both counters, then open this page in a <b>new tab</b> and reload. DevTools → Application → Storage.</p>
+  <div class="flex gap-4">
+    <button id="local" class="rounded bg-blue-600 px-4 py-2 text-white">localStorage: <span>0</span></button>
+    <button id="session" class="rounded bg-emerald-600 px-4 py-2 text-white">sessionStorage: <span>0</span></button>
+  </div>
+
+  <h2 class="text-xl font-bold">Cart (objects as JSON)</h2>
+  <div class="flex gap-2">
+    <button data-id="101" data-name="Iced coffee" class="add rounded border px-3 py-1">+ Iced coffee</button>
+    <button data-id="102" data-name="Tea" class="add rounded border px-3 py-1">+ Tea</button>
+    <button id="clear" class="rounded border px-3 py-1 text-red-600">Clear cart</button>
+  </div>
+  <ul id="cart" class="list-disc pl-6"></ul>
+  <pre id="raw" class="rounded bg-gray-900 p-3 text-xs text-green-300"></pre>
+  <p class="text-sm text-gray-500">Store ids & qty only – read prices from the server. Never store passwords, tokens or personal data.</p>
+
+  <script type="module">
+    // values are always strings → Number(...)
+    for (const [id, store] of [['local', localStorage], ['session', sessionStorage]]) {
+      const btn = document.getElementById(id);
+      const span = btn.querySelector('span');
+      span.textContent = Number(store.getItem('count') ?? 0);
+      btn.addEventListener('click', () => {
+        const n = Number(store.getItem('count') ?? 0) + 1;
+        store.setItem('count', n);
+        span.textContent = n;
+      });
+    }
+
+    function loadCart() {
+      try {
+        return JSON.parse(localStorage.getItem('cart')) ?? [];
+      } catch {
+        return []; // corrupted → empty
+      }
+    }
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    function render() {
+      const cart = loadCart();
+      document.getElementById('cart').replaceChildren(...cart.map((i) => {
+        const li = document.createElement('li');
+        li.textContent = `${i.name} × ${i.qty}`;
+        return li;
+      }));
+      document.getElementById('raw').textContent = localStorage.getItem('cart') ?? '(empty)';
+    }
+    document.querySelectorAll('.add').forEach((b) => b.addEventListener('click', () => {
+      const cart = loadCart();
+      const id = Number(b.dataset.id);
+      const item = cart.find((i) => i.id === id);
+      if (item) item.qty++;
+      else cart.push({ id, name: b.dataset.name, qty: 1 });
+      saveCart(cart);
+      render();
+    }));
+    document.getElementById('clear').addEventListener('click', () => {
+      localStorage.removeItem('cart');
+      render();
+    });
+    render();
+  </script>
+</body>
+</html>
