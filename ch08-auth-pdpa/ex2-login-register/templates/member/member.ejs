@@ -1,0 +1,8 @@
+<%- include('../partials/header') %>
+<main class="mx-auto w-full max-w-4xl p-6">
+  <h1 class="text-2xl font-bold">Hello <%= user.username %></h1>
+  <p class="mt-2">Role: <span class="rounded bg-slate-200 px-2"><%= user.role %></span></p>
+  <p class="mt-4 text-sm text-slate-500">This page is protected by <code>requireLogin</code>. Close the browser, edit the
+    <code>connect.sid</code> cookie in DevTools, or log out – then reload.</p>
+</main>
+<%- include('../partials/footer') %>

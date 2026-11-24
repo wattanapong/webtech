@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= locals.title ?? 'Member' %></title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-slate-50 text-slate-800">
+  <header class="bg-blue-600 text-white">
+    <div class="mx-auto flex max-w-4xl items-center gap-4 p-4">
+      <a href="/" class="font-bold">MyShop</a>
+      <% if (locals.user) { %>
+        <span class="ml-auto">Hello <%= user.username %></span>
+        <form action="/member/logout" method="post" class="inline">
+          <button class="underline">Logout</button>
+        </form>
+      <% } else { %>
+        <a href="/member/login" class="ml-auto">Login</a>
+        <a href="/member/register">Register</a>
+      <% } %>
+    </div>
+  </header>
