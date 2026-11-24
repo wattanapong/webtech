@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Who wins?</title>
+  <style>
+    p            { color: black; }   /* (0,0,1) */
+    .lead        { color: green; }   /* (0,1,0) */
+    p.lead       { color: orange; }  /* (0,1,1) */
+    #intro       { color: blue; }    /* (1,0,0) */
+    .lead        { color: purple; }  /* (0,1,0) – later, but lower specificity */
+    .inherit { color: teal; font-style: italic; border: 2px solid teal; padding: .5rem; }
+  </style>
+</head>
+<body>
+  <!-- CH3 · Who wins? Open DevTools → Elements → Styles.
+       1) Which colour is the text?  2) Remove #intro – now?  3) Then remove p.lead – now? -->
+  <p id="intro" class="lead">Hello</p>
+  <p class="inherit">Inheritance: <span>this span inherits the colour and font of its parent</span>,
+     but <span class="box">not the border</span>.</p>
+</body>
+</html>

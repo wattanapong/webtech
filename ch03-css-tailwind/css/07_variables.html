@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS variables</title>
+  <style>
+    :root { --brand: #7c3aed; --radius: .75rem; --space: 1rem; }
+    .btn { background: var(--brand); border-radius: var(--radius); padding: calc(var(--space) / 2) var(--space);
+           color: white; border: 0; font-size: 1rem; }
+    .btn:hover { filter: brightness(1.1); }
+    @media (prefers-color-scheme: dark) {
+      :root { --brand: #a78bfa; }
+      body { background: #111827; }
+    }
+  </style>
+</head>
+<body>
+  <!-- CH3 · CSS custom properties. Switch your OS to dark mode and reload. -->
+  <button class="btn">Save</button>
+</body>
+</html>

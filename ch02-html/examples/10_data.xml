@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CH2 · XML vs JSON – the same data (compare with 10_data.json) -->
+<students>
+  <student id="66020001">
+    <name>Somchai</name>
+    <major>CPE</major>
+  </student>
+  <student id="66020002">
+    <name>Suda</name>
+    <major>CPE</major>
+  </student>
+</students>

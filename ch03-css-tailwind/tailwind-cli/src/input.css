@@ -1,0 +1,19 @@
+/* CH3 · Setup C · Tailwind CLI – the way you use Tailwind with Express + EJS */
+@import "tailwindcss";
+
+/* also scan these folders for class names */
+@source "../public";
+@source "../views";
+
+@theme {
+  --color-brand-50:  oklch(0.97 0.02 300);
+  --color-brand-600: oklch(0.55 0.22 295);
+  --color-brand-700: oklch(0.48 0.22 295);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+  .btn { @apply inline-block rounded-lg px-4 py-2 font-medium; }
+  .btn-primary { @apply bg-brand-600 text-white hover:bg-brand-700; }
+}

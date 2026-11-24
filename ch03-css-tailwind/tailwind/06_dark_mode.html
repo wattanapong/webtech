@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dark mode</title>
+  <!-- Tailwind v4 Play CDN: for labs and prototypes only (needs internet) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-brand-50:  oklch(0.97 0.02 300);
+      --color-brand-600: oklch(0.55 0.22 295);
+      --color-brand-700: oklch(0.48 0.22 295);
+    }
+    @custom-variant dark (&:where(.dark, .dark *));
+  </style>
+</head>
+<body class="min-h-dvh bg-white p-8 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <!-- CH3 · dark: variant. @custom-variant makes dark: mean "inside .dark".
+       The toggle uses 1 line of JavaScript (DOM comes in CH4-2; saving it comes in CH9). -->
+  <div class="rounded-xl bg-slate-50 p-6 shadow dark:bg-slate-800">
+    <p>Click the button to switch theme.</p>
+    <button class="mt-4 rounded-lg bg-brand-600 px-4 py-2 text-white"
+            onclick="document.documentElement.classList.toggle('dark')">Toggle dark mode</button>
+  </div>
+</body>
+</html>
