@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9. Full page: navbar + sidebar + fixed footer</title>
+    <!-- Tailwind CSS v4 (Play CDN): one line, no install. Needs internet. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<!-- Everything together – the Tailwind version of ../index6.html (Bootstrap) -->
+<body class="font-sans">
+
+    <!-- 1) top navbar with hamburger (from 07) -->
+    <nav class="flex flex-wrap items-center justify-between bg-blue-700 px-6 py-4 text-white">
+        <a href="#" class="text-xl font-bold">Web Technology</a>
+        <input type="checkbox" id="menu-toggle" class="peer hidden">
+        <label for="menu-toggle" class="cursor-pointer text-3xl md:hidden">&#9776;</label>
+        <ul class="hidden w-full peer-checked:block md:flex md:w-auto md:gap-6">
+            <li><a href="#" class="block py-2 hover:text-yellow-300">Home</a></li>
+            <li><a href="#" class="block py-2 hover:text-yellow-300">News</a></li>
+            <li><a href="#" class="block py-2 hover:text-yellow-300">Contact Us</a></li>
+            <li><a href="#" class="block py-2 hover:text-yellow-300">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- 2) sidebar + main: one column on a phone, side by side from md: -->
+    <div class="flex flex-col pb-16 md:flex-row">
+
+        <!-- hidden md:block = hide the sidebar on a phone (the hamburger menu is enough) -->
+        <aside class="hidden bg-gray-100 p-4 md:block md:w-48">
+            <h3 class="mb-2 bg-white py-1 text-center font-bold text-blue-700">Menu</h3>
+            <ul>
+                <li class="mb-1 cursor-pointer rounded bg-indigo-200 p-2 hover:bg-blue-600 hover:text-white">Home</li>
+                <li class="mb-1 cursor-pointer rounded bg-indigo-200 p-2 hover:bg-blue-600 hover:text-white">News</li>
+                <li class="mb-1 cursor-pointer rounded bg-indigo-200 p-2 hover:bg-blue-600 hover:text-white">Contact Us</li>
+                <li class="mb-1 cursor-pointer rounded bg-indigo-200 p-2 hover:bg-blue-600 hover:text-white">About Us</li>
+            </ul>
+        </aside>
+
+        <main class="flex-1 p-6 text-center">
+            <h1 class="mb-4 text-2xl font-bold text-blue-700">ยินดีต้อนรับเข้าสู่ Web Technology</h1>
+            <h2 class="text-xl font-bold sm:text-2xl md:text-3xl">This is the example of sticky note.</h2>
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <div class="h-40 w-40 rounded bg-purple-400 p-3 shadow-lg">Sticky Note 1</div>
+                <div class="h-40 w-40 rounded bg-emerald-400 p-3 shadow-lg">Sticky Note 2</div>
+                <div class="h-40 w-40 rounded bg-lime-400 p-3 shadow-lg">Sticky Note 3</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 3) fixed footer (from 06) -->
+    <footer class="fixed bottom-0 w-full bg-cyan-500 p-3 text-center text-white">
+        &copy; 2026 Your Website Name
+    </footer>
+
+</body>
+</html>

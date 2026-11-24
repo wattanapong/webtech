@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Hamburger menu (JavaScript)</title>
+    <!-- Tailwind CSS v4 (Play CDN): one line, no install. Needs internet. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="font-sans">
+
+    <!-- HAMBURGER MENU with 3 lines of JavaScript (we learn JavaScript in CH4)
+         The button toggles the class "hidden" on the menu. -->
+    <nav class="flex flex-wrap items-center justify-between bg-blue-700 px-6 py-4 text-white">
+
+        <a href="#" class="text-xl font-bold">Web Tech</a>
+
+        <button id="menu-btn" class="text-3xl md:hidden">&#9776;</button>
+
+        <ul id="menu" class="hidden w-full md:flex md:w-auto md:gap-6">
+            <li><a href="#" class="block py-2 hover:text-yellow-300">Home</a></li>
+            <li><a href="#" class="block py-2 hover:text-yellow-300">News</a></li>
+            <li><a href="#" class="block py-2 hover:text-yellow-300">Contact</a></li>
+            <li><a href="#" class="block py-2 hover:text-yellow-300">About</a></li>
+        </ul>
+    </nav>
+
+    <main class="p-6">
+        <h1 class="text-2xl font-bold">Hamburger menu (JavaScript)</h1>
+        <p class="mt-2">Make the window narrow, then click ☰.</p>
+    </main>
+
+    <script>
+        const btn = document.getElementById("menu-btn");
+        const menu = document.getElementById("menu");
+        btn.addEventListener("click", () => menu.classList.toggle("hidden"));
+    </script>
+
+</body>
+</html>

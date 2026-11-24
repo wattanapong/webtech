@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. Layout (index1.html in Tailwind)</title>
+    <!-- Tailwind CSS v4 (Play CDN): one line, no install. Needs internet. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<!-- Same page as ../index1.html, but no <style> – only Tailwind classes.
+     body { margin: 0; font-family: Arial }  → Tailwind already removes the margin -->
+<body class="font-sans">
+
+    <!-- header { background-color: #0FF; color: blue; padding: 10px; text-align: center } -->
+    <header class="bg-cyan-300 p-3 text-center text-blue-700">
+        <h1 class="text-3xl font-bold">Your Website Title</h1>
+    </header>
+
+    <!-- old: aside float:left + main margin-left:150px
+         new: a flex row puts aside and main side by side -->
+    <div class="flex">
+
+        <!-- aside { background: #f4f4f4; width: 150px; height: 80vh; padding: 20px } -->
+        <aside class="h-[80vh] w-40 bg-gray-100 p-5">
+            <h2 class="text-xl font-bold">Sidebar</h2>
+        </aside>
+
+        <!-- main { padding: 20px } + flex-1 = take the rest of the width -->
+        <main class="flex-1 p-5">
+            <h2 class="text-xl font-bold">Main Content</h2>
+        </main>
+    </div>
+
+    <!-- footer { position: fixed; bottom: 0; width: 100%; text-align: right; ... } -->
+    <footer class="fixed bottom-0 w-full bg-cyan-200 px-2 py-1 text-right text-blue-700">
+        <p>&copy; 2026 Your Website Name</p>
+    </footer>
+
+</body>
+</html>

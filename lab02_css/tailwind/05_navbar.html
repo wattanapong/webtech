@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Top navbar</title>
+    <!-- Tailwind CSS v4 (Play CDN): one line, no install. Needs internet. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="font-sans">
+
+    <!-- TOP NAVBAR
+         flex            → put items in one row
+         justify-between → logo on the left, menu on the right
+         items-center    → center them vertically -->
+    <nav class="flex items-center justify-between bg-blue-700 px-6 py-4 text-white">
+
+        <a href="#" class="text-xl font-bold">Web Tech</a>
+
+        <!-- the menu is also a flex row; gap-6 = space between links -->
+        <ul class="flex gap-6">
+            <li><a href="#" class="hover:text-yellow-300">Home</a></li>
+            <li><a href="#" class="hover:text-yellow-300">News</a></li>
+            <li><a href="#" class="hover:text-yellow-300">Contact</a></li>
+            <li><a href="#" class="hover:text-yellow-300">About</a></li>
+        </ul>
+    </nav>
+
+    <main class="p-6">
+        <h1 class="text-2xl font-bold">Top navbar</h1>
+        <p class="mt-2">Try: change <b>justify-between</b> to <b>justify-center</b> or <b>justify-end</b>.</p>
+        <p class="mt-2">Open it on a phone (F12 → device toolbar): the links get crowded → we fix that with a hamburger menu (07, 08).</p>
+        <p class="mt-2">Make it stay on top when you scroll: add <b>sticky top-0</b> to the &lt;nav&gt;.</p>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Fixed footer</title>
+    <!-- Tailwind CSS v4 (Play CDN): one line, no install. Needs internet. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="font-sans">
+
+    <header class="bg-blue-700 p-4 text-white">
+        <h1 class="text-xl font-bold">Fixed footer</h1>
+    </header>
+
+    <!-- pb-20 = padding-bottom 5rem: leave space so the footer does not cover the last lines -->
+    <main class="p-6 pb-20">
+        <p class="mb-4">Scroll down. The footer always stays at the bottom of the screen.</p>
+        <p class="mb-4">Line 1</p><p class="mb-4">Line 2</p><p class="mb-4">Line 3</p>
+        <p class="mb-4">Line 4</p><p class="mb-4">Line 5</p><p class="mb-4">Line 6</p>
+        <p class="mb-4">Line 7</p><p class="mb-4">Line 8</p><p class="mb-4">Line 9</p>
+        <p class="mb-4">Line 10</p><p class="mb-4">Line 11</p><p class="mb-4">Line 12</p>
+        <p class="mb-4">Line 13</p><p class="mb-4">Line 14</p>
+        <p class="mb-4 font-bold">Last line – still visible because of pb-20</p>
+    </main>
+
+    <!-- FIXED FOOTER
+         fixed    = position: fixed
+         bottom-0 = bottom: 0
+         w-full   = width: 100%            (same as last year's footer CSS) -->
+    <footer class="fixed bottom-0 w-full bg-gray-800 p-4 text-center text-white">
+        &copy; 2026 Web Technology
+    </footer>
+
+</body>
+</html>

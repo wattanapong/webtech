@@ -1,0 +1,12 @@
+{
+  "name": "tailwind-cli-example",
+  "private": true,
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./output.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./output.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  }
+}

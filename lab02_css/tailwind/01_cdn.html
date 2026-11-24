@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. Tailwind via CDN</title>
+    <!-- Tailwind CSS v4 (Play CDN): one line, no install. Needs internet. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="p-8">
+
+    <!-- WAY 1: Play CDN – add ONE <script> line in <head>, then use classes -->
+    <h1 class="text-3xl font-bold text-blue-600">Hello Tailwind!</h1>
+
+    <p class="mt-4 text-gray-600">
+        No CSS file. Each class does one small job:
+    </p>
+
+    <ul class="mt-2 list-disc pl-6">
+        <li><b>text-3xl</b> = font-size: 1.875rem</li>
+        <li><b>font-bold</b> = font-weight: 700</li>
+        <li><b>text-blue-600</b> = color: blue (shade 600)</li>
+        <li><b>mt-4</b> = margin-top: 1rem (1 step = 0.25rem = 4px)</li>
+        <li><b>p-8</b> = padding: 2rem</li>
+    </ul>
+
+    <button class="mt-6 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-800">
+        Button (hover me)
+    </button>
+
+</body>
+</html>
