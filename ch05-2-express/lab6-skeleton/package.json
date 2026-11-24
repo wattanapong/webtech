@@ -1,0 +1,13 @@
+{
+  "name": "lab6-project-skeleton",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --env-file=.env index.js",
+    "dev": "node --watch --env-file=.env index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

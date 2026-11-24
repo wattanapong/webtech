@@ -1,0 +1,16 @@
+{
+  "name": "ch05-2-express-examples",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "hello": "node --watch 01_hello.js",
+    "methods": "node --watch 02_methods.js",
+    "params": "node --watch 03_params.js",
+    "middleware": "node --watch 04_middleware.js",
+    "static": "node --watch 05_static_404_error.js",
+    "router": "node --watch 06_router.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
