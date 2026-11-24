@@ -1,0 +1,12 @@
+<nav class="bg-blue-700 text-white">
+  <div class="mx-auto flex max-w-5xl gap-6 p-4">
+    <a href="/" class="font-bold">MyShop</a>
+    <a href="/items">Items</a>
+    <a href="/about">About</a>
+    <% if (locals.user) { %>
+      <span class="ml-auto">Hi, <%= user.name %></span>
+    <% } else { %>
+      <a href="/login" class="ml-auto">Login</a>
+    <% } %>
+  </div>
+</nav>

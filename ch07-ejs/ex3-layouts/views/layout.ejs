@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %></title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-gray-50">
+  <header class="bg-blue-700 p-4 font-bold text-white">Web Programming Technology</header>
+  <div class="flex flex-1 flex-col md:flex-row">
+    <aside class="bg-white p-4 md:w-48">
+      <a href="/" class="block">Home</a>
+      <a href="/main" class="block">Main</a>
+    </aside>
+    <main class="flex-1 p-6">
+      <%- body %>
+    </main>
+  </div>
+  <footer class="bg-gray-800 p-4 text-center text-sm text-white">©wattanapong suttapak</footer>
+</body>
+</html>
