@@ -2,9 +2,10 @@
 const form = document.querySelector("#register");
 const { password, confirm, phone } = form.elements;
 
-confirm.addEventListener("input", () => {
+const checkConfirm = () =>
   confirm.setCustomValidity(confirm.value === password.value ? "" : "Passwords do not match");
-});
+confirm.addEventListener("input", checkConfirm);
+password.addEventListener("input", checkConfirm);
 
 // custom error message with Tailwind classes
 const err = document.querySelector("#phone-err");
@@ -18,6 +19,7 @@ phone.addEventListener("blur", () => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault(); // no backend yet (CH5)
+  checkConfirm();
   if (!form.checkValidity()) {
     form.reportValidity(); // show the browser messages
     return;

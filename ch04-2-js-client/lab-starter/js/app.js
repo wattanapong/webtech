@@ -11,14 +11,19 @@ document.querySelector("#menu-btn")?.addEventListener("click", () => {
 
 // 2) Register: password ≥ 8 (HTML), confirm must match (JS), red messages
 const form = document.querySelector("#register");
-form?.addEventListener("submit", (e) => {
+function checkConfirm() {
   const { password, confirm } = form.elements;
   const same = password.value === confirm.value;
   confirm.setCustomValidity(same ? "" : "Passwords differ");
   const err = document.querySelector("#confirm-err");
   err.textContent = same ? "" : "Passwords do not match";
   err.classList.toggle("hidden", same);
-
+}
+// re-check while typing, otherwise the old custom error blocks the next submit
+form?.elements.password.addEventListener("input", checkConfirm);
+form?.elements.confirm.addEventListener("input", checkConfirm);
+form?.addEventListener("submit", (e) => {
+  checkConfirm();
   e.preventDefault(); // no backend yet – remove this in CH5 when Express handles POST
   if (!form.checkValidity()) {
     form.reportValidity();
