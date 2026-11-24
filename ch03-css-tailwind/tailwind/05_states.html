@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>States</title>
+  <!-- Tailwind v4 Play CDN: for labs and prototypes only (needs internet) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-brand-50:  oklch(0.97 0.02 300);
+      --color-brand-600: oklch(0.55 0.22 295);
+      --color-brand-700: oklch(0.48 0.22 295);
+    }
+  </style>
+</head>
+<body class="space-y-6 p-8">
+  <!-- CH3 · hover, focus, active, disabled, user-invalid, group. Press Tab to see focus rings. -->
+  <button class="rounded-lg bg-sky-600 px-4 py-2 text-white hover:bg-sky-700 focus-visible:ring-4
+                 focus-visible:ring-sky-300 focus-visible:outline-none active:scale-95">Save</button>
+  <button disabled class="rounded-lg bg-sky-600 px-4 py-2 text-white disabled:cursor-not-allowed disabled:opacity-50">Disabled</button>
+  <div>
+    <label for="em" class="block text-sm font-medium">Email (type something wrong, then leave the field)</label>
+    <input id="em" type="email" required class="mt-1 rounded border px-3 py-2 focus:border-sky-500 focus:outline-none user-invalid:border-red-500">
+  </div>
+  <a href="#" class="group block max-w-xs rounded p-4 hover:bg-slate-100">
+    <h3 class="font-semibold group-hover:text-sky-700">Room A</h3>
+    <p class="text-sm text-slate-500">Hover the whole card</p>
+  </a>
+</body>
+</html>

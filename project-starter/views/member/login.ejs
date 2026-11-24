@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<main class="m-auto w-full max-w-sm rounded-xl bg-white p-6 shadow dark:bg-slate-800">
+  <h1 class="text-2xl font-bold">Login</h1>
+  <% if (locals.msg) { %>
+    <p class="mt-2 rounded p-2 <%= msg.includes('Success') ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-600' %>"><%= msg %></p>
+  <% } %>
+  <form action="/member/verify" method="post" class="mt-4 space-y-3">
+    <input name="username" required placeholder="Username" autocomplete="username" value="<%= locals.username ?? '' %>" class="w-full input">
+    <input name="password" type="password" required placeholder="Password" autocomplete="current-password" class="w-full input">
+    <button class="w-full rounded btn btn-primary">Login</button>
+  </form>
+  <p class="mt-4 text-sm">No account? <a href="/member/register" class="text-brand-600 underline">Register</a></p>
+</main>
+<%- include('../partials/footer') %>

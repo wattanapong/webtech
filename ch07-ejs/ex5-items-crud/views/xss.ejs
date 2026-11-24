@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+<main class="mx-auto max-w-3xl space-y-4 p-6">
+  <h1 class="text-2xl font-bold">XSS: one character makes the difference</h1>
+  <form class="flex gap-2">
+    <input name="text" value="<%= text %>" class="flex-1 rounded border p-2">
+    <button class="rounded bg-blue-600 px-4 text-white">Show</button>
+  </form>
+  <p class="text-sm">Try: <code>&lt;img src=x onerror=alert(document.domain)&gt;</code></p>
+  <section class="rounded bg-green-50 p-4">
+    <h2 class="font-semibold">Safe: &lt;%= text %&gt; (escaped, shown as text)</h2>
+    <p><%= text %></p>
+  </section>
+  <section class="rounded bg-red-50 p-4">
+    <h2 class="font-semibold">Unsafe: &lt;%- text %&gt; (raw – the browser RUNS it)</h2>
+    <p><%- text %></p>
+  </section>
+  <p class="text-sm text-gray-600">Rule: if you did not write the HTML yourself, it goes through &lt;%= %&gt;.</p>
+</main>
+<%- include('partials/footer') %>

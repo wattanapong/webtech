@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reusable components</title>
+  <!-- Tailwind v4 Play CDN: for labs and prototypes only (needs internet) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-brand-50:  oklch(0.97 0.02 300);
+      --color-brand-600: oklch(0.55 0.22 295);
+      --color-brand-700: oklch(0.48 0.22 295);
+    }
+    @layer components {
+      .btn { @apply rounded-lg px-4 py-2 font-medium inline-block; }
+      .btn-primary { @apply bg-brand-600 text-white hover:bg-brand-700; }
+    }
+  </style>
+</head>
+<body class="space-x-4 p-8">
+  <!-- CH3 · Repeated class lists → a component class with @apply (or an EJS partial in CH7) -->
+  <a href="#" class="btn btn-primary">Login</a>
+  <button class="btn btn-primary">Save</button>
+  <!-- Never build class names dynamically: bg-${color}-600 is NOT detected by Tailwind -->
+</body>
+</html>

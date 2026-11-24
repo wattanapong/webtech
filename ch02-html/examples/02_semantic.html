@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Requests · CampusFix</title>
+  <meta name="description" content="CH2 HTML example">
+</head>
+<body>
+  <!-- CH2 · A Semantic Page Skeleton – use this layout on every lab page -->
+  <header>
+    <a href="/">CampusFix</a>
+    <nav>
+      <a href="#requests">Requests</a>
+      <a href="#login">Log in</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Dorm repair requests</h1>
+    <article>
+      <h2>Broken fan – Room 305</h2>
+      <p><time datetime="2026-11-11">11 Nov</time> · <mark>urgent</mark></p>
+      <p>The ceiling fan makes a <strong>loud noise</strong> and stops after <em>5 minutes</em>.</p>
+    </article>
+    <section>
+      <h2>Div soup vs semantic</h2>
+      <!-- BAD:  <div class="header"><div class="nav">…  (no meaning)  -->
+      <!-- GOOD: <header><nav>…  (browser, screen reader and Google understand it) -->
+      <p>Use <code>&lt;div&gt;</code> only when no semantic element fits.</p>
+    </section>
+    <aside>Tips for faster repairs: add a photo and your room number.</aside>
+  </main>
+  <footer>© 2026 CampusFix · Group 1</footer>
+</body>
+</html>

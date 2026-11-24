@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attributes and classList</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="js/03_attributes_classlist.js" defer></script>
+</head>
+<body class="mx-auto max-w-3xl space-y-6 bg-slate-50 p-6 text-slate-800">
+  <!-- CH4-2 · Attributes, data-*, classList (toggle Tailwind classes), textContent vs innerHTML -->
+  <img id="logo" src="../lab-starter/images/logo.png" alt="Shop logo" width="64" height="32">
+  <button class="buy rounded bg-orange-600 px-4 py-2 text-white" data-id="42" data-price="199">Buy</button>
+  <nav class="flex items-center justify-between rounded bg-white p-3 shadow">
+    <b>Menu demo</b>
+    <button id="menu-btn" class="rounded border px-3 py-1" aria-controls="menu">☰ Toggle menu</button>
+  </nav>
+  <ul id="menu" class="hidden space-y-1 rounded bg-white p-3 shadow"><li>Rooms</li><li>Login</li></ul>
+  <div class="card rounded bg-white p-4 opacity-50">Card (watch its classes change)</div>
+  <label class="block">Type some HTML, e.g. &lt;img src=x onerror=alert(1)&gt;
+    <input id="userInput" class="mt-1 w-full rounded border px-3 py-2">
+  </label>
+  <p>textContent (safe): <span id="safe" class="font-mono"></span></p>
+  <p>innerHTML (dangerous with user data): <span id="unsafe" class="font-mono"></span></p>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# .gitignore  (Node.js + Express project) – rename this file to .gitignore
+node_modules/
+.env
+.env.*
+!.env.example
+npm-debug.log*
+.DS_Store
+Thumbs.db

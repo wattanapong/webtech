@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model device {
+  device_id      Int         @id @unique(map: "device_id") @default(autoincrement())
+  device_name    String      @db.VarChar(50)
+  manufacture_id Int
+  sensor_type_id Int
+  manufacture    manufacture @relation(fields: [manufacture_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_device_manufacture1")
+  sensor_type    sensor_type @relation(fields: [sensor_type_id], references: [sensor_type_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_device_sensor_type1")
+  iot_data       iot_data[]
+
+  @@index([manufacture_id], map: "fk_device_manufacture1_idx")
+  @@index([sensor_type_id], map: "fk_device_sensor_type1_idx")
+}
+
+model iot_data {
+  id          Int      @id @unique(map: "id") @default(autoincrement())
+  timestamp   DateTime @db.Timestamp(0)
+  value       Float    @db.Float
+  device_id   Int
+  location_id Int
+  device      device   @relation(fields: [device_id], references: [device_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_iot_data_device1")
+  location    location @relation(fields: [location_id], references: [location_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_iot_data_location1")
+
+  @@index([device_id], map: "fk_iot_data_device1_idx")
+  @@index([location_id], map: "fk_iot_data_location1_idx")
+}
+
+model location {
+  location_id   Int        @id @unique(map: "location_id_UNIQUE") @default(autoincrement())
+  location_name String     @db.VarChar(50)
+  iot_data      iot_data[]
+}
+
+model manufacture {
+  id     Int      @id @unique(map: "id_UNIQUE") @default(autoincrement())
+  name   String?  @db.VarChar(50)
+  device device[]
+}
+
+model sensor_type {
+  sensor_type_id Int      @id @unique(map: "sensor_type_id") @default(autoincrement())
+  type_name      String   @db.VarChar(50)
+  unit           String?  @db.VarChar(20)
+  device         device[]
+}

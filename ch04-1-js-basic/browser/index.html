@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CH4-1 · JavaScript in the browser</title>
+  <!-- defer: main.js runs AFTER the HTML is parsed, so <h1> exists.
+       Without defer, querySelector("h1") returns null here in <head>. -->
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <h1></h1>
+  <p>Open DevTools (F12) → Console and type JavaScript there too.</p>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; }
+    h1 { font-size: clamp(1.75rem, 1rem + 3vw, 3rem); }
+    .container { width: min(100% - 2rem, 1100px); margin-inline: auto; }
+    .cards, .gallery { display: grid; gap: 1rem; }
+    .cards > div, .gallery > div, .card { background: #e0f2fe; padding: 1rem; border-radius: .5rem; }
+    @media (min-width: 768px)  { .cards { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+    .gallery { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .row { display: grid; grid-template-columns: 200px 1fr; gap: 1rem; }
+    .card-list { container-type: inline-size; }
+    .card { display: block; }
+    @container (min-width: 500px) { .card { display: flex; gap: 1rem; } }
+  </style>
+</head>
+<body>
+  <!-- CH3 · Mobile-first @media, clamp(), min(), auto-fit, @container -->
+  <div class="container">
+    <h1>Fluid heading with clamp()</h1>
+    <h2>Mobile-first cards (@media min-width)</h2>
+    <div class="cards"><div>1</div><div>2</div><div>3</div></div>
+    <h2>Gallery with auto-fit (no media query)</h2>
+    <div class="gallery"><div>A</div><div>B</div><div>C</div><div>D</div></div>
+    <h2>Container query: same card in a narrow and a wide box</h2>
+    <div class="row">
+      <div class="card-list narrow"><div class="card"><b>Card</b><span>narrow container → block</span></div></div>
+      <div class="card-list"><div class="card"><b>Card</b><span>wide container → flex</span></div></div>
+    </div>
+  </div>
+</body>
+</html>

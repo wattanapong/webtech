@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in · CampusFix</title>
+  <!-- Tailwind v4 Play CDN: for labs and prototypes only (needs internet) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="js/app.js" defer></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-brand-50:  oklch(0.97 0.02 300);
+      --color-brand-600: oklch(0.55 0.22 295);
+      --color-brand-700: oklch(0.48 0.22 295);
+    }
+    @custom-variant dark (&:where(.dark, .dark *));
+    @layer components {
+      .btn { @apply inline-block rounded-lg px-4 py-2 font-medium; }
+      .btn-primary { @apply bg-brand-600 text-white hover:bg-brand-700 focus-visible:ring-4 focus-visible:ring-brand-50; }
+      .input { @apply mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-brand-600 focus:outline-none user-invalid:border-red-500 dark:bg-slate-800 dark:border-slate-600; }
+      .label { @apply block text-sm font-medium; }
+    }
+  </style>
+</head>
+<body class="flex min-h-dvh flex-col bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+  <header class="bg-white shadow dark:bg-slate-800">
+    <nav class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-3">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-brand-600">
+        <img src="images/logo.png" alt="" width="64" height="32"> CampusFix
+      </a>
+      <button id="menu-btn" class="md:hidden" aria-label="Open menu" aria-controls="menu">☰</button>
+      <ul id="menu" class="hidden w-full flex-col gap-2 md:flex md:w-auto md:flex-row md:gap-6">
+        <li><a href="index.html" class="hover:text-brand-600">Home</a></li>
+        <li><a href="list.html" class="hover:text-brand-600">Requests</a></li>
+        <li><a href="login.html" class="hover:text-brand-600">Log in</a></li>
+        <li><a href="register.html" class="hover:text-brand-600">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
+    <div class="mx-auto max-w-md rounded-xl bg-white p-6 shadow dark:bg-slate-800">
+      <h1 class="text-2xl font-bold">Log in</h1>
+      <form action="member.html" method="get" class="mt-6 space-y-4">
+        <div><label for="email" class="label">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required class="input"></div>
+        <div><label for="password" class="label">Password</label>
+          <input id="password" name="password" type="password" minlength="8" autocomplete="current-password" required class="input"></div>
+        <button class="btn btn-primary w-full">Log in</button>
+      </form>
+      <p class="mt-4 text-sm">No account? <a href="register.html" class="text-brand-600 underline">Register</a></p>
+    </div>
+  </main>
+  <footer class="bg-slate-800 py-4 text-center text-sm text-slate-200">© 2026 CampusFix · Group 1 · 226297 Web Programming Technology</footer>
+</body>

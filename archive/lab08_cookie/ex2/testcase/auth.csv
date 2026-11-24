@@ -1,0 +1,9 @@
+username,password,expected
+admin,@dmin,success
+wanna,WannA,success
+cpe01,Cpe2024,success
+john,1234,success
+admin,1234,failed
+wan na,1234,failed
+c,1234,failed
+mark,,failed

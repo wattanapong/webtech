@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%# greeting card – this comment is NOT sent to the browser %>
+  <h1>Hello, <%= user.name %>!</h1>
+  <% if (user.isAdmin) { %>
+    <a href="/admin">Admin panel</a>
+  <% } %>
+
+  <h2>&lt;%= note %&gt; – escaped (safe)</h2>
+  <p><%= note %></p>
+  <h2>&lt;%- note %&gt; – raw (only for HTML you wrote)</h2>
+  <div><%- note %></div>
+
+  <p>Right-click → View page source: the browser receives plain HTML.</p>
+  <p><a href="/products">Products (loop)</a> · <a href="/empty">Empty list (if/else)</a></p>
+</body>
+</html>

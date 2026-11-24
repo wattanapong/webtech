@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in · CampusFix</title>
+  <meta name="description" content="CampusFix – report and track dorm repairs.">
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="images/logo.png" alt="CampusFix home" width="40" height="20"></a>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="list.html">Requests</a> |
+      <a href="login.html">Log in</a> |
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Log in</h1>
+    <!-- mockup only: the form just goes to member.html. A real login comes in CH8. -->
+    <form action="member.html" method="get">
+      <p><label for="email">Email</label>
+         <input id="email" name="email" type="email" autocomplete="email" required></p>
+      <p><label for="password">Password</label>
+         <input id="password" name="password" type="password" minlength="8"
+                autocomplete="current-password" required></p>
+      <button type="submit">Log in</button>
+    </form>
+    <p>No account? <a href="register.html">Register</a></p>
+  </main>
+  <footer>© 2026 CampusFix · Group 1 · 226297 Web Programming Technology</footer>
+</body>
+</html>

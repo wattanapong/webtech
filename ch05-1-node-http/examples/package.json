@@ -1,0 +1,13 @@
+{
+  "name": "ch05-1-examples",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "loop": "node 01_event_loop.js",
+    "files": "node 02_files.js",
+    "request": "node --watch 03_request.js",
+    "routes": "node --watch 04_routes.js",
+    "server": "node --watch 05_server.js",
+    "ssr": "node --watch 06_ssr.js"
+  }
+}

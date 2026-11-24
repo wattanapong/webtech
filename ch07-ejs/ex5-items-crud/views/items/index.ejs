@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+<main class="mx-auto max-w-3xl p-6">
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-bold"><%= title %></h1>
+    <a href="/items/new" class="rounded bg-blue-600 px-4 py-2 text-white">+ New item</a>
+  </div>
+  <% if (items.length === 0) { %>
+    <p class="mt-4">No items yet.</p>
+  <% } else { %>
+  <table class="mt-4 w-full bg-white text-left shadow">
+    <thead class="bg-gray-100"><tr><th class="p-2">Name</th><th class="p-2 text-right">Price</th><th class="p-2"></th><th class="p-2"></th></tr></thead>
+    <tbody>
+    <% items.forEach(item => { %>
+      <tr class="border-t">
+        <td class="p-2"><%= item.name %></td>
+        <td class="p-2 text-right"><%= Number(item.price).toFixed(2) %> ฿</td>
+        <td class="p-2"><a href="/items/<%= item.id %>/edit" class="text-blue-700">Edit</a></td>
+        <td class="p-2">
+          <form action="/items/<%= item.id %>/delete" method="post" onsubmit="return confirm('Delete?')">
+            <button class="text-red-600">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+    </tbody>
+  </table>
+  <% } %>
+</main>
+<%- include('../partials/footer') %>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= locals.title ? title + ' · ' : '' %>MyProject</title>
+  <link rel="icon" href="/img/logo.png">
+  <!-- built by "npm run css" (Tailwind CLI) -->
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    try { // saved theme before paint → no flash (CH9)
+      const t = localStorage.getItem('theme');
+      if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
+    } catch {}
+  </script>
+  <script src="/js/app.js" defer></script>
+</head>
+<body class="flex min-h-screen flex-col bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+  <%- include('nav') %>

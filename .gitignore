@@ -1,9 +1,25 @@
-node_modules
+# dependencies
+node_modules/
+
+# secrets: copy .env.example to .env and fill in your own values
+.env
+.env.*
+!.env.example
+
+# your own practice work (never pulled over by git pull)
+my-work/
+
+# build output / OS / editor
+dist/
+*.log
+.DS_Store
+Thumbs.db
+
+# old personal entries
 *.wattanapong.com*
 x.wattanapong.com
-test
-tmp
 hosting_nodejs
-**/node_modules
-# lecture slides – kept on the lecturer's computer only, never pushed
+tmp/
+
+# lecture slides – kept local only, never pushed
 slides/

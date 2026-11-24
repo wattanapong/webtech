@@ -1,0 +1,188 @@
+const express = require('express');
+const router = express.Router();
+
+const bodyParser = require('body-parser');
+const path = require('path')
+const pool = require('../lib/mysqlpool')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const cookie = require('cookie-parser')
+
+
+
+
+router.use(cookie());
+
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
+
+router.get('/login', (req, res) => {
+    const msg = req.query.msg
+    const username = req.cookies.username;
+    if (username)
+        res.redirect('member')
+    else
+        res.render('member/login', {registerStatus: msg})
+});
+
+router.get('/register', (req, res) => {
+    res.render('member/register')
+})
+
+router.post('/register', (req, res)=> {
+    const {username, password} = req.body
+    const sql = "INSERT INTO user (username, password) VALUES (?, ?)"
+
+    bcrypt.hash(password, 12, (err, hash) => {
+        if (err){
+            console.log(err)
+            res.render('member/register', {msg: 'Something went wrong, please contact admin'})
+        }else{
+            pool.query(sql, [username, hash], (err, results) => {
+                if (err){
+                    console.log(err)
+                    res.render('member/register', {msg: 'Something went wrong, please contact admin'})
+                }else{
+                    res.redirect('/?msg=Register Success')
+                }
+            })
+        }
+    })
+})
+
+router.post('/register-api', (req, res)=> {
+    const {username, password} = req.body
+    const sql = "INSERT INTO user (username, password) VALUES (?, ?)"
+    
+    console.log(username, password)
+
+    if (username == '' || password == ''){
+        res.json({'msg': 'failed'})
+        return
+    }
+        
+    if (!username || !password){
+        res.json({'msg': 'failed'})
+        return
+    }
+
+    if (username.includes(' ') || password.includes(' ')){
+        res.json({'msg': 'failed'})
+        return
+    }
+
+    if (username.length < 4 || password.length < 4){
+        res.json({'msg': 'failed'})
+        return
+    }
+
+    bcrypt.hash(password, 12, (err, hash) => {
+        if (err){
+            console.log(err)
+            res.json({'msg': 'error'})
+        }else{
+            pool.query(sql, [username, hash], (err, results) => {
+                if (err){
+                    console.log(err)
+                    res.json({'msg': 'failed'})
+                }else{
+                    res.json({'msg': 'success'})
+                }
+            })
+        }
+    })
+})
+
+router.post('/verify-api', (req,res) => {
+    const {username, password} = req.body
+    const sql = "SELECT * FROM user WHERE username = ?"
+
+    if (!username || !password){
+        res.json({'msg':'failed'})
+        return
+    }
+
+    pool.query(sql, username, (err, results) =>{
+        if (err){
+            console.log(err)
+            res.json({'msg':'failed'})
+        }else{
+            if (results.length == 0)
+                res.json({'msg':'failed'})
+            else{
+                if (!bcrypt.compareSync(password, results[0].password)){
+                    res.json({'msg':'failed'})
+                    return
+                }
+                res.json({'msg':'success'})
+            }
+
+        }
+    })
+})
+
+
+router.post('/verify', (req,res) => {
+    const {username, password} = req.body
+    const sql = "SELECT * FROM user WHERE username = ?"
+
+    pool.query(sql, username, (err, results) =>{
+        if (err){
+            console.log(err)
+            res.render('member/login', {username: username, msg: 'Something went wrong, please contact admin'})
+        }else{
+            if (results.length == 0)
+                res.render('member/login', {msg: 'Wrong Username or Password'})
+            else{
+                if (!bcrypt.compareSync(password, results[0].password)){
+                    res.render('member/login', {username: username, msg: 'Wrong Username or Password'})
+                    return
+                }
+                const token = jwt.sign({username: username}, process.env.secret)
+                res.cookie('username', username, {maxAge: 24*60*60*1000, httpOnly: true})
+                res.cookie('token', token, {maxAge: 24*60*60*1000, httpOnly: true})
+                res.redirect('/member/member')
+            }
+
+        }
+    })
+})
+
+router.get('/api/user-cookie', (req, res) => {
+    const username = req.cookies.username;
+    if (username)
+        res.json({'username': username})
+    else
+        res.json({'username': ''})
+})
+
+router.get('/api/user', (req, res) => {
+    pool.query("SELECT username, privilege_id FROM user", (err, results) => {
+        if (err){
+            console.log(err)
+            res.json({'msg':'failed'})
+        }else{
+            res.json({'msg':'success', 'data':results})
+        }
+    })
+})
+
+router.get('/member', (req, res) => {
+    const username = req.cookies.username;
+    if (username)
+        res.render('member/member', {username:username})
+    else
+        res.redirect('/member/login')
+});
+
+router.get('/logout', (req, res) => {
+    const username = req.cookies.username;
+    if (username){
+        res.clearCookie('token')
+        res.clearCookie('username')
+    }
+    res.redirect('/member/login')
+});
+
+
+module.exports = router;

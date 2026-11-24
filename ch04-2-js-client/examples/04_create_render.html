@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create and render</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="js/04_create_render.js" defer></script>
+</head>
+<body class="mx-auto max-w-3xl space-y-6 bg-slate-50 p-6 text-slate-800">
+  <!-- CH4-2 · Creating & inserting elements + render a list from data with <template> -->
+  <h1 class="text-2xl font-bold">To-do</h1>
+  <form id="todo-form" class="flex gap-2">
+    <input name="task" required placeholder="New task" class="flex-1 rounded border px-3 py-2">
+    <button class="rounded bg-orange-600 px-4 text-white">Add</button>
+  </form>
+  <ul id="todo" class="space-y-2"></ul>
+
+  <h2 class="text-xl font-bold">Products (rendered from an array)</h2>
+  <template id="row">
+    <li class="rounded border bg-white p-3"><h3 class="font-bold"></h3><p class="text-sm"></p></li>
+  </template>
+  <ul id="products" class="grid gap-3 md:grid-cols-3"></ul>
+</body>
+</html>

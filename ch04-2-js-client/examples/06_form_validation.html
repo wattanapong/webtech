@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form validation</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="js/06_form_validation.js" defer></script>
+</head>
+<body class="mx-auto max-w-3xl space-y-6 bg-slate-50 p-6 text-slate-800">
+  <!-- CH4-2 · Reading form data (FormData) + Constraint Validation API + custom messages with Tailwind -->
+  <h1 class="text-2xl font-bold">Register</h1>
+  <form id="register" class="space-y-4 rounded-xl bg-white p-6 shadow" novalidate>
+    <label class="block"><span class="text-sm font-medium">Email</span>
+      <input name="email" type="email" required class="mt-1 w-full rounded-lg border px-3 py-2 user-invalid:border-red-500"></label>
+    <label class="block"><span class="text-sm font-medium">Phone</span>
+      <input name="phone" pattern="0[0-9]{9}" required class="mt-1 w-full rounded-lg border px-3 py-2"></label>
+    <p id="phone-err" class="hidden text-sm text-red-600"></p>
+    <label class="block"><span class="text-sm font-medium">Password (min 8)</span>
+      <input name="password" type="password" minlength="8" required class="mt-1 w-full rounded-lg border px-3 py-2 user-invalid:border-red-500"></label>
+    <label class="block"><span class="text-sm font-medium">Confirm password</span>
+      <input name="confirm" type="password" required class="mt-1 w-full rounded-lg border px-3 py-2 user-invalid:border-red-500"></label>
+    <label class="flex gap-2"><input name="remember" type="checkbox"> Remember me</label>
+    <button class="w-full rounded-lg bg-orange-600 py-2 font-semibold text-white hover:bg-orange-700">Register</button>
+  </form>
+  <pre id="out" class="rounded bg-slate-900 p-4 text-sm text-green-300"></pre>
+  <p class="text-sm text-slate-500">Client-side validation is for the user. The server must validate again (CH5) – users can switch JS off.</p>
+</body>
+</html>

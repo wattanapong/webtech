@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accessible table</title>
+  <meta name="description" content="CH2 HTML example">
+</head>
+<body>
+  <h1>Accessible data table</h1>
+  <!-- tables are for DATA, never for page layout -->
+  <table border="1">
+    <caption>Lab schedule 2/2569</caption>
+    <thead>
+      <tr>
+        <th scope="col">Day</th>
+        <th scope="col">Course</th>
+        <th scope="col">Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Wed</th>
+        <td>226297 Web Programming (Sec 1)</td>
+        <td>08:00–12:00</td>
+      </tr>
+      <tr>
+        <th scope="row">Wed</th>
+        <td>226297 Web Programming (Sec 2)</td>
+        <td>13:00–17:00</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="3">Room ICT 1104</td></tr>
+    </tfoot>
+  </table>
+</body>
+</html>

@@ -1,0 +1,25 @@
+
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.thumbnail img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin: 0 5px 20px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.thumbnail img:hover {
+    transform: scale(1.5);
+}
+
+.gallery img {
+    margin-bottom: 100px;
+    max-width: 800px;
+}
+
