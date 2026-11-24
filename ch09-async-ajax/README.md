@@ -1,6 +1,6 @@
 # CH9 · Asynchronous Programming & AJAX (Week 11)
 
-Slides: `slides/CH9 - Asynchronous Programming and AJAX.pptx`
+Slides: **CH9 - Asynchronous Programming and AJAX** (from the lecturer; not in this repo)
 
 ## `ex1-promise-async/`: event loop, Promise, async/await
 

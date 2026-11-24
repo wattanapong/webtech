@@ -1,6 +1,6 @@
 # CH4-2 · JavaScript: Client Side (Week 4)
 
-Slides: `slides/CH4-2 - JavaScript Client Side.pptx`
+Slides: **CH4-2 - JavaScript Client Side** (from the lecturer; not in this repo)
 
 Open the pages with the VS Code **Live Server** extension, or by double-clicking them. Keep DevTools → Console open.
 

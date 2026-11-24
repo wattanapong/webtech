@@ -1,6 +1,6 @@
 # CH2 · HTML (Week 2)
 
-Slides: `slides/CH2 - HTML.pptx`
+Slides: **CH2 - HTML** (from the lecturer; not in this repo)
 
 Open the files directly in your browser, or use the VS Code **Live Server** extension. No Node.js is needed this week.
 

@@ -1,6 +1,6 @@
 # CH4-1 · JavaScript Basic (Week 4)
 
-Slides: `slides/CH4-1 - JavaScript Basic.pptx`
+Slides: **CH4-1 - JavaScript Basic** (from the lecturer; not in this repo)
 
 ## Run
 

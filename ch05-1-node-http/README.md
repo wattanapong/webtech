@@ -1,6 +1,6 @@
 # CH5-1 · Node.js & Web Server (Week 5)
 
-Slides: `slides/CH5-1 - NodeJS and Web Server (SSR).pptx`
+Slides: **CH5-1 - NodeJS and Web Server (SSR)** (from the lecturer; not in this repo)
 
 Needs **Node.js 24 LTS** (`node -v`). No packages are installed in this chapter: everything uses Node's built-in modules.
 

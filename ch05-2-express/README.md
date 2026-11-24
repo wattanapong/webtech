@@ -1,6 +1,6 @@
 # CH5-2 · Express.js (Week 6)
 
-Slides: `slides/CH5-2 - ExpressJS.pptx`
+Slides: **CH5-2 - ExpressJS** (from the lecturer; not in this repo)
 
 ## `examples/`
 

@@ -1,6 +1,6 @@
 # CH5-3 · Database & RESTful API (Week 7)
 
-Slides: `slides/CH5-3 - Database and RESTful API (CRUD).pptx`
+Slides: **CH5-3 - Database and RESTful API (CRUD)** (from the lecturer; not in this repo)
 
 You need MySQL or MariaDB plus HeidiSQL (see the root `SETUP.md`). Create a user once:
 

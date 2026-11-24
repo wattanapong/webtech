@@ -1,6 +1,6 @@
 # CH8 · Authentication, Authorization & PDPA (Week 10)
 
-Slides: `slides/CH8 - Authentication, Authorization and PDPA.pptx`
+Slides: **CH8 - Authentication, Authorization and PDPA** (from the lecturer; not in this repo)
 
 ## Setup (once)
 

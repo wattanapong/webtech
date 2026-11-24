@@ -1,7 +1,7 @@
 # 226297 Web Programming Technology (2/2569)
 
 Example code and lab model answers for the Web Programming Technology course, Computer Engineering, School of ICT, University of Phayao.
-Every folder matches a slide deck in `slides/`.
+Every folder matches one lecture slide deck (slides are shared by the lecturer, not stored in this repo).
 
 **Course stack:** Node.js 24 · Express 5 · EJS · TailwindCSS 4 · MySQL/MariaDB. No other language or JS framework.
 
@@ -32,7 +32,6 @@ Every folder matches a slide deck in `slides/`.
 |--------|------|
 | [`project-starter/`](project-starter) | A full-stack skeleton (Express 5 + EJS + Tailwind CLI + MySQL + login/admin + PDPA) to start your group project from |
 | [`database/`](database) | `classicmodels.sql` sample DB + optional Docker MySQL |
-| `slides/` | Lecture slides (CH0–CH9) |
 | `archive/` | The 2025 examples (Express 4, Mustache, Bootstrap). Kept for reference only; don't use them for the project |
 
 ## How each example works

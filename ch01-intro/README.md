@@ -1,6 +1,6 @@
 # CH1 · Introduction to Web Technology (Week 1)
 
-Slides: `slides/CH1 - Introduction to Web Technology.pptx`, "First Node.js Web Server" and Lab 1.
+Slides: **CH1 - Introduction to Web Technology** (from the lecturer; not in this repo), "First Node.js Web Server" and Lab 1.
 
 ## Files
 

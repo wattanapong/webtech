@@ -1,6 +1,6 @@
 # CH3 · CSS & TailwindCSS (Week 3)
 
-Slides: `slides/CH3 - CSS and TailwindCSS.pptx`
+Slides: **CH3 - CSS and TailwindCSS** (from the lecturer; not in this repo)
 
 > The course project uses **TailwindCSS only**. Bootstrap is covered on one comparison page here; the old Bootstrap labs are in `archive/lab02_css`.
 

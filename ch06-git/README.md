@@ -1,6 +1,6 @@
 # CH6 · Software Collaboration Tool: Git & GitHub (Week 9)
 
-Slides: `slides/CH6 - Software Collaboration Tool (Git and GitHub).pptx`
+Slides: **CH6 - Software Collaboration Tool (Git and GitHub)** (from the lecturer; not in this repo)
 
 > **Tip for the course:** you need Git from Week 1 to pull this repository. Part A below is the minimum to learn on day 1.
 

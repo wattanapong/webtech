@@ -1,6 +1,6 @@
 # CH7 · EJS Template Engine (Week 9)
 
-Slides: `slides/CH7 - EJS Template Engine.pptx`
+Slides: **CH7 - EJS Template Engine** (from the lecturer; not in this repo)
 
 Run any example the same way:
 
